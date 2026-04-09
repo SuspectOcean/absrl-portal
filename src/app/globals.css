@@ -1,10 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: #0a0a0a;
-  --foreground: #d0d0d0;
+@theme {
+  --color-racing-black: #0a0a0a;
+  --color-racing-dark: #111111;
+  --color-racing-gray: #1a1a1a;
+  --color-racing-light: #2a2a2a;
+  --color-neon-cyan: #00f0ff;
+  --color-neon-orange: #ff6b00;
+  --color-neon-cyan-dim: #00a0aa;
+  --color-neon-orange-dim: #cc5500;
 }
 
 html {
@@ -13,15 +17,14 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: #0a0a0a;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -29,21 +32,19 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333333;
-  border-radius: 4px;
+  background: #333;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background: #555;
 }
 
-/* Firefox scrollbar */
 * {
-  scrollbar-color: #333333 #0a0a0a;
+  scrollbar-color: #333 #0a0a0a;
   scrollbar-width: thin;
 }
 
-/* Racing stripe accent utility */
 @layer utilities {
   .racing-stripe-bg {
     background-image: repeating-linear-gradient(
@@ -68,7 +69,7 @@ body {
   }
 
   .animated-gradient-border {
-    @apply relative;
+    position: relative;
     background: linear-gradient(90deg, #0a0a0a, #0a0a0a) content-box;
     background-clip: content-box;
     border: 2px solid transparent;

@@ -1,217 +1,121 @@
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import carsData from '@/data/cars.json'
-import driversData from '@/data/drivers.json'
+import cars from '@/data/cars.json'
+import drivers from '@/data/drivers.json'
 
-// Create driver lookup map
 const driverMap = Object.fromEntries(
-  driversData.map(driver => [driver.car, driver])
+  drivers.map(d => [d.car, d])
 )
 
-export async function generateStaticParams() {
-  return carsData.map(car => ({
+export const generateStaticParams = async () => {
+  return cars.map(car => ({
     slug: car.slug,
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const car = carsData.find(c => c.slug === params.slug)
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params
+  const car = cars.find(c => c.slug === slug)
+
   if (!car) {
     return {
       title: 'Car Not Found',
+      description: 'The requested car could not be found.',
     }
   }
+
   return {
     title: `${car.name} - ABSRL GT7`,
-    description: `${car.make} ${car.class} specs and driver details`,
+    description: `${car.name} specifications, driver, and performance details in ABSRL Season 1.`,
   }
 }
 
-export default function CarDetailPage({ params }: { params: { slug: string } }) {
-  const car = carsData.find(c => c.slug === params.slug)
+export default async function CarDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const car = cars.find(c => c.slug === slug)
+  const driver = car ? driverMap[car.name] : null
+
   if (!car) {
-    notFound()
-  }
-
-  const driver = driverMap[car.name]
-
-  return (
-    <div className="min-h-screen bg-racing-black">
-      {/* Back Link */}
-      <div className="border-b border-neon-cyan/20 px-6 py-6 md:px-12">
-        <div className="mx-auto max-w-7xl">
-          <Link
-            href="/cars"
-            className="inline-flex items-center gap-2 text-neon-cyan hover:text-neon-cyan/80 transition-colors text-sm font-mono"
-          >
-            ← Back to The Grid
+    return (
+      <main className="h-screen bg-racing-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-neon-orange mb-2">Car Not Found</h1>
+          <Link href="/cars" className="text-neon-cyan hover:underline text-sm">
+            ← Back to Grid
           </Link>
         </div>
-      </div>
+      </main>
+    )
+  }
 
+  return (
+    <main className="h-screen bg-racing-black text-white overflow-hidden flex flex-col">
       {/* Header */}
-      <div className="border-b border-neon-cyan/20 px-6 py-12 md:px-12">
-        <div className="mx-auto max-w-7xl">
-          {/* Make Logo Area */}
-          <div className="mb-6 h-16 flex items-center">
-            <p className="text-2xl font-bold text-gray-400">{car.make}</p>
-          </div>
-
-          {/* Car Name */}
-          <h1 className="text-5xl md:text-6xl font-bold text-white">
-            {car.name}
-          </h1>
-
-          {/* Class Badge */}
-          <div className="mt-4 inline-block bg-neon-orange/20 border border-neon-orange px-4 py-2 rounded-full text-sm font-bold text-neon-orange uppercase">
-            {car.class}
-          </div>
+      <div className="h-16 border-b border-neon-cyan/30 px-4 sm:px-6 flex items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-black text-neon-cyan">{car.name}</h1>
+          <p className="text-xs text-gray-400">{car.make}</p>
         </div>
+        <Link href="/cars" className="text-xs text-neon-orange hover:underline font-semibold">
+          ← Cars
+        </Link>
       </div>
 
-      {/* Main Content */}
-      <div className="px-6 py-12 md:px-12">
-        <div className="mx-auto max-w-7xl grid lg:grid-cols-3 gap-12">
-          {/* Left Column */}
-          <div className="lg:col-span-2 space-y-12">
-            {/* Photo Placeholder */}
-            <div className="relative h-96 rounded-lg border border-neon-cyan/30 bg-gradient-to-b from-gray-800 to-black flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_40%,rgba(0,240,255,0.5),transparent_50%)]" />
-              <div className="text-gray-600 text-8xl font-light">🏎</div>
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+        <div className="max-w-3xl">
+          {/* Specs Grid: 4 boxes */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+            <div className="border border-neon-cyan/30 rounded p-3 bg-racing-dark">
+              <p className="text-xs text-gray-400 uppercase font-bold">Class</p>
+              <p className="text-lg font-black text-neon-cyan mt-1">{car.class}</p>
             </div>
-
-            {/* Specs Grid */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-6">Specifications</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="rounded-lg border border-neon-cyan/30 bg-gray-900 p-4">
-                  <p className="text-xs uppercase tracking-widest text-gray-400 font-mono">
-                    Class
-                  </p>
-                  <p className="mt-3 text-2xl font-bold text-neon-cyan">
-                    {car.class}
-                  </p>
-                </div>
-
-                <div className="rounded-lg border border-neon-cyan/30 bg-gray-900 p-4">
-                  <p className="text-xs uppercase tracking-widest text-gray-400 font-mono">
-                    Drivetrain
-                  </p>
-                  <p className="mt-3 text-2xl font-bold text-neon-cyan">
-                    {car.drivetrain}
-                  </p>
-                </div>
-
-                <div className="rounded-lg border border-neon-cyan/30 bg-gray-900 p-4">
-                  <p className="text-xs uppercase tracking-widest text-gray-400 font-mono">
-                    Power
-                  </p>
-                  <p className="mt-3 text-2xl font-bold text-neon-cyan">
-                    {car.power}
-                  </p>
-                </div>
-
-                <div className="rounded-lg border border-neon-cyan/30 bg-gray-900 p-4">
-                  <p className="text-xs uppercase tracking-widest text-gray-400 font-mono">
-                    Weight
-                  </p>
-                  <p className="mt-3 text-2xl font-bold text-neon-cyan">
-                    {car.weight}
-                  </p>
-                </div>
-              </div>
+            <div className="border border-neon-cyan/30 rounded p-3 bg-racing-dark">
+              <p className="text-xs text-gray-400 uppercase font-bold">Drivetrain</p>
+              <p className="text-lg font-black text-neon-orange mt-1">{car.drivetrain}</p>
             </div>
-
-            {/* Description */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">About</h2>
-              <p className="text-gray-300 leading-relaxed text-lg">
-                {car.description}
-              </p>
+            <div className="border border-neon-cyan/30 rounded p-3 bg-racing-dark">
+              <p className="text-xs text-gray-400 uppercase font-bold">Power</p>
+              <p className="text-lg font-black text-neon-cyan mt-1">{car.power.split(' ')[0]}</p>
+            </div>
+            <div className="border border-neon-cyan/30 rounded p-3 bg-racing-dark">
+              <p className="text-xs text-gray-400 uppercase font-bold">Weight</p>
+              <p className="text-lg font-black text-neon-orange mt-1">{car.weight.split(' ')[0]}</p>
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="space-y-8">
-            {/* Piloted By */}
-            {driver && (
-              <div className="rounded-lg border border-neon-orange/30 bg-gray-900/50 p-8">
-                <p className="text-xs uppercase tracking-widest text-gray-400 font-mono mb-6">
-                  Piloted by
-                </p>
+          {/* Description */}
+          <p className="text-sm text-gray-300 leading-relaxed mb-4">
+            {car.description}
+          </p>
 
-                <Link
-                  href={`/drivers/${driver.id}`}
-                  className="block group"
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-full bg-neon-orange/20 border-2 border-neon-orange flex items-center justify-center">
-                      <span className="text-2xl font-bold text-neon-orange">
-                        {driver.initials}
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-xl font-bold text-white group-hover:text-neon-orange transition-colors">
-                        {driver.firstName} {driver.lastName}
-                      </p>
-                      <p className="text-sm text-gray-400">
-                        #{driver.number}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Driver Stats */}
-                  <div className="mt-6 space-y-3 pt-6 border-t border-gray-700">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400 text-sm">Wins</span>
-                      <span className="text-neon-orange font-bold text-lg">
-                        {driver.stats.wins}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400 text-sm">Podiums</span>
-                      <span className="text-neon-orange font-bold text-lg">
-                        {driver.stats.podiums}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400 text-sm">Points</span>
-                      <span className="text-neon-orange font-bold text-lg">
-                        {driver.stats.points}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            )}
-
-            {/* Quick Stats */}
-            <div className="rounded-lg border border-neon-cyan/30 bg-gray-900/50 p-8">
-              <p className="text-xs uppercase tracking-widest text-gray-400 font-mono mb-6">
-                Quick Reference
+          {/* Piloted by */}
+          {driver && (
+            <div className="border-t border-neon-cyan/20 pt-4">
+              <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-2">
+                Piloted by
               </p>
-              <div className="space-y-4 text-sm">
-                <div>
-                  <p className="text-gray-400 mb-1">Make</p>
-                  <p className="text-white font-semibold">{car.make}</p>
+              <Link
+                href={`/drivers/${driver.id}`}
+                className="flex items-center gap-3 group"
+              >
+                <div className="w-10 h-10 rounded-full bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-xs font-bold text-neon-cyan">
+                  {driver.initials}
                 </div>
-                <div>
-                  <p className="text-gray-400 mb-1">Drivetrain</p>
-                  <p className="text-white font-semibold">{car.drivetrain}</p>
+                <div className="group-hover:text-neon-cyan transition-colors">
+                  <p className="font-semibold text-white">
+                    {driver.firstName} {driver.lastName}
+                  </p>
+                  <p className="text-xs text-gray-400">{driver.nationality}</p>
                 </div>
-                <div>
-                  <p className="text-gray-400 mb-1">Total Power</p>
-                  <p className="text-white font-semibold">{car.power}</p>
-                </div>
-                <div>
-                  <p className="text-gray-400 mb-1">Curb Weight</p>
-                  <p className="text-white font-semibold">{car.weight}</p>
-                </div>
-              </div>
+              </Link>
             </div>
-          </div>
+          )}
         </div>
       </div>
-    </div>
+    </main>
   )
 }

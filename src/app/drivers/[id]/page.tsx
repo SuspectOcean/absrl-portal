@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import drivers from '@/data/drivers.json';
 import cars from '@/data/cars.json';
+import standings from '@/data/standings.json';
 
 interface Driver {
   id: string;
@@ -27,7 +28,15 @@ interface Car {
   name: string;
   make: string;
   class: string;
-  description: string;
+  drivetrain: string;
+  power: string;
+  weight: string;
+}
+
+interface Standing {
+  driverId: string;
+  rounds: (number | null)[];
+  total: number;
 }
 
 export async function generateStaticParams() {
@@ -38,196 +47,150 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const driver = (drivers as Driver[]).find((d) => d.id === params.id);
-
-  if (!driver) {
-    return {
-      title: 'Driver Not Found | ABSRL GT7',
-      description: 'This driver does not exist in the ABSRL GT7 roster.',
-    };
-  }
-
+  if (!driver) return { title: 'Driver Not Found' };
   return {
-    title: `${driver.firstName} ${driver.lastName} | ABSRL GT7 Drivers`,
-    description: `${driver.firstName} ${driver.lastName} (#${driver.number}) drives the ${driver.car} in the ABSRL GT7 esports league. ${driver.stats.points} points, ${driver.stats.wins} wins.`,
+    title: `${driver.firstName} ${driver.lastName} | ABSRL GT7`,
+    description: `${driver.firstName} ${driver.lastName} (#${driver.number}), ${driver.stats.points}pts, ${driver.stats.wins}W.`,
   };
 }
 
-export default function DriverProfile({ params }: { params: { id: string } }) {
-  const driver = (drivers as Driver[]).find((d) => d.id === params.id);
-
+export default function DriverPage({ params }: { params: { id: string } }) {
+  const driver = (drivers as Driver[]).find((d) => d.id === params.id) as Driver | undefined;
   if (!driver) {
     return (
-      <div className="min-h-screen bg-racing-black text-white">
-        <div className="flex items-center justify-center px-6 py-24">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-neon-cyan">Driver Not Found</h1>
-            <p className="mt-2 text-gray-400">This driver is not in the roster.</p>
-            <Link
-              href="/drivers"
-              className="mt-6 inline-block rounded-lg bg-neon-cyan px-6 py-3 font-bold text-racing-black transition-all hover:bg-neon-orange"
-            >
-              Back to Drivers
-            </Link>
-          </div>
-        </div>
+      <div className="min-h-screen bg-racing-black text-white p-4">
+        <Link href="/drivers" className="text-neon-cyan hover:text-neon-orange">
+          ← Drivers
+        </Link>
+        <p className="mt-4 text-gray-400">Not found.</p>
       </div>
     );
   }
 
   const carData = (cars as Car[]).find((c) => c.slug === driver.carSlug);
-
-  // Generate round-by-round points (mock data for 5 rounds based on final totals)
-  // In a real app, this would come from standings.json
-  const roundPoints = [
-    Math.ceil(driver.stats.points * 0.25),
-    Math.ceil(driver.stats.points * 0.22),
-    Math.ceil(driver.stats.points * 0.2),
-    Math.ceil(driver.stats.points * 0.18),
-    Math.ceil(driver.stats.points * 0.15),
-  ].slice(0, 5);
-
-  const maxRoundPoints = Math.max(...roundPoints, 25);
+  const standing = (standings as Standing[]).find((s) => s.driverId === driver.id);
+  const roundPoints = standing?.rounds || [];
 
   return (
     <div className="min-h-screen bg-racing-black text-white">
-      {/* Header */}
-      <header className="border-b border-neon-cyan/20 bg-gray-900/50 px-6 py-8 md:px-12 lg:px-16">
-        <Link
-          href="/drivers"
-          className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-neon-cyan transition-all hover:gap-3"
-        >
-          ← Back to Drivers
-        </Link>
-
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          {/* Driver Identity */}
-          <div className="flex items-end gap-6">
-            <div
-              className={`flex h-32 w-32 flex-shrink-0 items-center justify-center rounded-full text-5xl font-bold ${
-                driver.status === 'active'
-                  ? 'border-4 border-neon-cyan bg-neon-cyan/10'
-                  : 'border-4 border-gray-600 bg-gray-700/30'
-              }`}
-            >
-              {driver.initials}
-            </div>
-            <div>
-              <div className="flex items-center gap-4">
-                <h1 className="text-4xl font-bold md:text-5xl">
-                  {driver.firstName}
-                </h1>
-                <div className="rounded-lg border-2 border-neon-orange bg-neon-orange/10 px-4 py-2 text-2xl font-bold text-neon-orange">
-                  #{driver.number}
-                </div>
-              </div>
-              <p className="text-2xl font-bold text-gray-400">{driver.lastName}</p>
-              <p className="mt-1 text-sm text-gray-500">{driver.nationality}</p>
-            </div>
-          </div>
-
-          {/* Status Badge */}
-          <div>
-            <span
-              className={`inline-block rounded-full px-4 py-2 text-sm font-bold uppercase tracking-wide ${
-                driver.status === 'active'
-                  ? 'bg-green-600/20 text-green-400'
-                  : 'bg-gray-700/40 text-gray-400'
-              }`}
-            >
-              {driver.status === 'active' ? 'Active' : 'Former'}
-            </span>
+      {/* Header Bar */}
+      <div className="border-b border-neon-cyan/20 px-6 py-4 md:px-8">
+        <div className="flex items-center justify-between">
+          <Link href="/drivers" className="text-neon-cyan hover:text-neon-orange text-xs font-bold">
+            ← DRIVERS
+          </Link>
+          <div className="bg-neon-orange/10 border border-neon-orange text-neon-orange px-2 py-1 rounded text-xs font-bold">
+            #{driver.number}
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Main Content */}
-      <main className="px-6 py-12 md:px-12 lg:px-16">
-        {/* Stats Grid */}
-        <section className="mb-12">
-          <h2 className="mb-6 text-2xl font-bold text-neon-cyan">Season Stats</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {[
-              { label: 'Points', value: driver.stats.points, color: 'neon-orange' },
-              { label: 'Wins', value: driver.stats.wins, color: 'green-400' },
-              { label: 'Podiums', value: driver.stats.podiums, color: 'blue-400' },
-              { label: 'Best Finish', value: driver.stats.bestFinish, color: 'purple-400' },
-              { label: 'DNFs', value: driver.stats.dnfs, color: 'gray-400' },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-lg border border-gray-800 bg-gray-900/50 p-6"
+      <main className="px-6 py-6 md:px-8">
+        <div className="max-w-3xl">
+          {/* Header: Avatar + Name/Status + Car */}
+          <div className="mb-6 flex items-start gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-neon-cyan bg-neon-cyan/10 text-lg font-bold text-neon-cyan flex-shrink-0">
+              {driver.initials}
+            </div>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl md:text-2xl font-bold leading-tight">
+                {driver.firstName} {driver.lastName}
+              </h1>
+              <p className="text-xs text-gray-400 mt-1">{driver.car}</p>
+              <span
+                className={`inline-block mt-2 rounded px-2 py-0.5 text-xs font-bold uppercase ${
+                  driver.status === 'active'
+                    ? 'bg-green-600/20 text-green-400'
+                    : 'bg-gray-700/40 text-gray-400'
+                }`}
               >
-                <p className="text-sm font-semibold text-gray-400">{stat.label}</p>
-                <p className={`mt-2 text-3xl font-bold text-${stat.color}`}>
-                  {stat.value}
-                </p>
-              </div>
-            ))}
+                {driver.status === 'active' ? 'Active' : 'Former'}
+              </span>
+            </div>
           </div>
-        </section>
 
-        {/* Car Info */}
-        {carData && (
-          <section className="mb-12">
-            <h2 className="mb-6 text-2xl font-bold text-neon-cyan">Car</h2>
-            <Link href={`/cars/${carData.slug}`} className="group block">
-              <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-8 transition-all duration-300 hover:border-neon-cyan hover:bg-gray-900/80">
-                <div className="mb-4 flex items-start justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold transition-colors duration-300 group-hover:text-neon-cyan">
-                      {carData.name}
-                    </h3>
-                    <p className="mt-1 text-gray-400">
-                      {carData.make} • {carData.class}
-                    </p>
-                  </div>
-                  <span className="text-neon-cyan transition-all duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </div>
-                <p className="text-sm text-gray-300">{carData.description}</p>
-              </div>
-            </Link>
-          </section>
-        )}
-
-        {/* Bio Section */}
-        <section className="mb-12">
-          <h2 className="mb-6 text-2xl font-bold text-neon-cyan">Profile</h2>
-          <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-8">
-            <p className="text-base leading-relaxed text-gray-300">{driver.bio}</p>
+          {/* Stats Row: 5 compact cards */}
+          <div className="mb-6 grid grid-cols-2 gap-2 md:grid-cols-5">
+            <div className="bg-racing-dark border border-gray-800 rounded p-2">
+              <div className="text-xs text-gray-500 font-semibold">PTS</div>
+              <div className="text-lg font-bold text-neon-cyan">{driver.stats.points}</div>
+            </div>
+            <div className="bg-racing-dark border border-gray-800 rounded p-2">
+              <div className="text-xs text-gray-500 font-semibold">W</div>
+              <div className="text-lg font-bold text-neon-orange">{driver.stats.wins}</div>
+            </div>
+            <div className="bg-racing-dark border border-gray-800 rounded p-2">
+              <div className="text-xs text-gray-500 font-semibold">POD</div>
+              <div className="text-lg font-bold text-yellow-400">{driver.stats.podiums}</div>
+            </div>
+            <div className="bg-racing-dark border border-gray-800 rounded p-2">
+              <div className="text-xs text-gray-500 font-semibold">BEST</div>
+              <div className="text-lg font-bold text-white">P{driver.stats.bestFinish}</div>
+            </div>
+            <div className="bg-racing-dark border border-gray-800 rounded p-2">
+              <div className="text-xs text-gray-500 font-semibold">DNF</div>
+              <div className="text-lg font-bold text-gray-400">{driver.stats.dnfs}</div>
+            </div>
           </div>
-        </section>
 
-        {/* Performance Chart */}
-        <section className="mb-12">
-          <h2 className="mb-6 text-2xl font-bold text-neon-cyan">Round-by-Round</h2>
-          <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-8">
-            <div className="space-y-6">
+          {/* Bio */}
+          <div className="mb-6 bg-racing-dark border border-gray-800 rounded p-3">
+            <p className="text-xs text-gray-300 leading-relaxed line-clamp-3">{driver.bio}</p>
+          </div>
+
+          {/* Season Results Bar Chart */}
+          <div className="bg-racing-dark border border-gray-800 rounded p-3 mb-6">
+            <h3 className="text-xs font-bold text-neon-cyan mb-2">SEASON (R1–R8)</h3>
+            <div className="flex items-end gap-1 h-16">
               {roundPoints.map((points, idx) => (
-                <div key={idx} className="flex items-end gap-4">
-                  <div className="w-20 flex-shrink-0">
-                    <p className="text-sm font-bold text-gray-400">Round {idx + 1}</p>
-                    <p className="mt-1 text-xl font-bold text-neon-orange">{points}</p>
-                  </div>
-                  <div className="flex-grow">
-                    <div className="h-3 overflow-hidden rounded-full bg-gray-700">
-                      <div
-                        className="h-full bg-gradient-to-r from-neon-cyan to-neon-orange transition-all duration-300"
-                        style={{
-                          width: `${(points / maxRoundPoints) * 100}%`,
-                        }}
-                      />
-                    </div>
-                  </div>
+                <div key={idx} className="flex flex-col items-center flex-1">
+                  <div
+                    className="w-full rounded-t transition-opacity"
+                    style={{
+                      height: points ? `${(points / 25) * 100}%` : '3px',
+                      minHeight: '3px',
+                      backgroundColor: points === null ? '#4b5563' : points === 0 ? '#6b7280' : '#ff6b00',
+                    }}
+                  />
+                  <span className="text-xs text-gray-500 mt-1 font-semibold">R{idx + 1}</span>
                 </div>
               ))}
             </div>
-            <p className="mt-6 border-t border-gray-700 pt-4 text-xs text-gray-500">
-              Points distributed across 5 rounds based on final season total. Actual round data from standings tracking.
-            </p>
+            <div className="mt-2 grid grid-cols-4 gap-1 text-xs md:grid-cols-8">
+              {roundPoints.map((points, idx) => (
+                <div key={idx} className="text-center font-semibold text-neon-orange">
+                  {points ?? '—'}
+                </div>
+              ))}
+            </div>
           </div>
-        </section>
+
+          {/* Car Specs */}
+          {carData && (
+            <div className="bg-racing-dark border border-gray-800 rounded p-3">
+              <h3 className="text-xs font-bold text-neon-cyan mb-2">VEHICLE</h3>
+              <div className="grid grid-cols-2 gap-2 text-xs md:grid-cols-4">
+                <div>
+                  <div className="text-gray-500 font-semibold">Class</div>
+                  <div className="text-gray-200 text-sm">{carData.class}</div>
+                </div>
+                <div>
+                  <div className="text-gray-500 font-semibold">Drivetrain</div>
+                  <div className="text-gray-200 text-sm">{carData.drivetrain}</div>
+                </div>
+                <div>
+                  <div className="text-gray-500 font-semibold">Power</div>
+                  <div className="text-gray-200 text-sm">{carData.power}</div>
+                </div>
+                <div>
+                  <div className="text-gray-500 font-semibold">Weight</div>
+                  <div className="text-gray-200 text-sm">{carData.weight}</div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </main>
     </div>
   );

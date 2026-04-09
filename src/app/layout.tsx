@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-gray-200" style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}>
+      <body className="min-h-screen flex flex-col bg-racing-black text-gray-200">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

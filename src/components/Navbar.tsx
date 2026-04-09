@@ -22,36 +22,32 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-racing-black/80 backdrop-blur-md border-b border-racing-light">
+    <nav className="sticky top-0 z-50 bg-racing-dark/90 backdrop-blur-sm border-b border-racing-light/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-12">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="flex items-center">
-              <span className="text-2xl font-bold text-white tracking-wider">
-                ABSRL
-              </span>
-              <div className="ml-2 w-6 h-6 bg-gradient-to-r from-neon-cyan to-neon-orange rounded-sm transform group-hover:scale-110 transition-transform" />
-            </div>
+          <Link href="/" className="flex items-center gap-1.5 group">
+            <span className="text-lg font-bold text-white tracking-wider">ABSRL</span>
+            <div className="w-4 h-4 bg-gradient-to-r from-neon-cyan to-neon-orange rounded-sm group-hover:scale-110 transition-transform" />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors relative py-2 ${
+                  className={`text-xs font-medium transition-colors relative py-1 ${
                     active
                       ? 'text-neon-cyan'
-                      : 'text-gray-300 hover:text-white'
+                      : 'text-gray-400 hover:text-gray-200'
                   }`}
                 >
                   {link.label}
                   {active && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-neon-cyan to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-px bg-neon-cyan" />
                   )}
                 </Link>
               );
@@ -61,23 +57,23 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 hover:bg-racing-light rounded-lg transition-colors"
+            className="md:hidden p-1.5 hover:bg-racing-light rounded transition-colors"
             aria-label="Toggle menu"
           >
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1">
               <span
-                className={`block w-6 h-0.5 bg-neon-cyan transition-all ${
-                  mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                className={`block w-5 h-0.5 bg-neon-cyan transition-all ${
+                  mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
                 }`}
               />
               <span
-                className={`block w-6 h-0.5 bg-neon-cyan transition-all ${
+                className={`block w-5 h-0.5 bg-neon-cyan transition-all ${
                   mobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`block w-6 h-0.5 bg-neon-cyan transition-all ${
-                  mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                className={`block w-5 h-0.5 bg-neon-cyan transition-all ${
+                  mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
                 }`}
               />
             </div>
@@ -86,8 +82,8 @@ export default function Navbar() {
 
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-racing-light bg-racing-dark animate-in fade-in slide-in-from-top-2">
-            <div className="flex flex-col py-4 px-4 gap-2">
+          <div className="md:hidden border-t border-racing-light/40 bg-racing-dark animate-in fade-in slide-in-from-top-2">
+            <div className="flex flex-col py-2 px-4 gap-1">
               {navLinks.map((link) => {
                 const active = isActive(link.href);
                 return (
@@ -95,10 +91,10 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`px-4 py-2 rounded-lg transition-colors ${
+                    className={`px-3 py-1.5 rounded text-xs transition-colors ${
                       active
                         ? 'bg-racing-light text-neon-cyan'
-                        : 'text-gray-300 hover:bg-racing-light hover:text-white'
+                        : 'text-gray-400 hover:bg-racing-light/50 hover:text-gray-200'
                     }`}
                   >
                     {link.label}
