@@ -134,7 +134,7 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
 
   if (!race) {
     return (
-      <div className="min-h-screen bg-racing-black text-white p-6">
+      <div className="bg-racing-black text-white p-6">
         <Link href="/races" className="text-antigua-gold hover:text-antigua-red text-sm font-bold">← RACES</Link>
         <p className="mt-4 text-gray-400">Round not found.</p>
       </div>
@@ -151,7 +151,7 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
   const nextRound = race.round < 8 ? `round-${race.round + 1}` : null;
 
   return (
-    <div className="min-h-screen bg-racing-black text-white">
+    <div className="bg-racing-black text-white">
       {/* Header */}
       <div className="border-b border-antigua-gold/20 px-4 py-3 md:px-6 flex items-center justify-between">
         <div className="flex items-center gap-3">

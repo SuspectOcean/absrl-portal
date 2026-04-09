@@ -106,7 +106,7 @@ function strategyTip(race: { pitStrategy: string | null; tireAllowance: string |
 
 export default function RacesPage() {
   return (
-    <div className="min-h-screen bg-racing-black text-white">
+    <div className="bg-racing-black text-white">
       {/* Compact Header */}
       <div className="border-b border-antigua-gold/20 px-4 py-3 md:px-6 flex items-center justify-between">
         <div>
