@@ -4,7 +4,7 @@ import races from '@/data/races.json';
 import tracks from '@/data/tracks.json';
 import drivers from '@/data/drivers.json';
 import standings from '@/data/standings.json';
-import { trackSvgPaths, trackStartCoords } from '@/data/trackPaths';
+import { trackSvgPaths, trackStartCoords, trackMapImages } from '@/data/trackPaths';
 
 interface Race {
   id: string; round: number; status: 'completed' | 'upcoming';
@@ -116,24 +116,28 @@ function generateStrategy(rc: RaceCondition, track: TrackData | undefined): { ti
 }
 
 function TrackMap({ slug }: { slug: string }) {
+  const imageUrl = trackMapImages[slug];
+  if (imageUrl) {
+    return (
+      <div className="w-full bg-white rounded-lg overflow-hidden">
+        <img src={imageUrl} alt={`${slug} track map`} className="w-full h-auto" />
+      </div>
+    );
+  }
+
   const path = trackSvgPaths[slug];
   const start = trackStartCoords[slug];
   if (!path) return <div className="w-full h-64 bg-gray-900 rounded-lg flex items-center justify-center text-gray-600">Track map unavailable</div>;
 
   return (
     <svg viewBox="0 0 200 150" className="w-full h-64 bg-gradient-to-br from-gray-900 to-black rounded-lg p-4">
-      {/* Track outline glow */}
       <path d={path} fill="none" stroke="#FCD116" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" opacity="0.15" />
-      {/* Track surface */}
       <path d={path} fill="none" stroke="#555" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Racing line */}
       <path d={path} fill="none" stroke="#FCD116" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Start/Finish */}
       {start && (
         <>
           <circle cx={start.x} cy={start.y} r="5" fill="#CE1126" opacity="0.3" />
           <circle cx={start.x} cy={start.y} r="3" fill="#CE1126" />
-          {/* S/F line */}
           <line x1={start.x - 6} y1={start.y} x2={start.x + 6} y2={start.y} stroke="white" strokeWidth="1.5" />
         </>
       )}

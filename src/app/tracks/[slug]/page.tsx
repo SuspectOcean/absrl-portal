@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import tracks from '@/data/tracks.json';
-import { trackSvgPaths, trackStartCoords } from '@/data/trackPaths';
+import { trackSvgPaths, trackStartCoords, trackMapImages } from '@/data/trackPaths';
 
 interface Track {
   slug: string;
@@ -77,19 +77,24 @@ function AnalysisBar({
 }
 
 function TrackSvgMap({ slug }: { slug: string }) {
+  const imageUrl = trackMapImages[slug];
+  if (imageUrl) {
+    return (
+      <div className="w-full bg-white rounded-lg overflow-hidden">
+        <img src={imageUrl} alt={`${slug} track map`} className="w-full h-auto" />
+      </div>
+    );
+  }
+
   const path = trackSvgPaths[slug];
   const start = trackStartCoords[slug];
   if (!path) return <div className="w-full h-72 bg-racing-dark rounded-lg flex items-center justify-center text-gray-600">Track map unavailable</div>;
 
   return (
     <svg viewBox="0 0 200 150" className="w-full h-72 bg-gradient-to-br from-gray-900 to-black rounded-lg p-4">
-      {/* Track outline glow */}
       <path d={path} fill="none" stroke="#FCD116" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" opacity="0.1" />
-      {/* Track surface */}
       <path d={path} fill="none" stroke="#555" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Racing line */}
       <path d={path} fill="none" stroke="#FCD116" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Start/Finish */}
       {start && (
         <>
           <circle cx={start.x} cy={start.y} r="6" fill="#CE1126" opacity="0.3" />

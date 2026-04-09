@@ -196,6 +196,16 @@ export const trackSvgPaths: Record<string, string> = {
   ].join(' '),
 };
 
+// Real GT7 track map images from GT Engine
+export const trackMapImages: Record<string, string> = {
+  'trial-mountain': 'https://gt-engine.com/gt7/tracks/images/md/trial-mountain.png',
+  'laguna-seca': 'https://gt-engine.com/gt7/tracks/images/md/laguna-seca.png',
+  'spa-francorchamps': 'https://gt-engine.com/gt7/tracks/images/md/spa-francorchamps.png',
+  'red-bull-ring': 'https://gt-engine.com/gt7/tracks/images/md/red-bull-ring.png',
+  'interlagos': 'https://gt-engine.com/gt7/tracks/images/md/interlagos.png',
+  'deep-forest-raceway': 'https://gt-engine.com/gt7/tracks/images/md/deep-forest.png',
+};
+
 // Start/Finish line coordinates for each track (for the red dot marker)
 export const trackStartCoords: Record<string, { x: number; y: number }> = {
   'trial-mountain': { x: 35, y: 130 },

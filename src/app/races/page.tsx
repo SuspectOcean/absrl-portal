@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import races from '@/data/races.json';
 import drivers from '@/data/drivers.json';
 import standings from '@/data/standings.json';
-import { trackSvgPaths, trackStartCoords } from '@/data/trackPaths';
+import { trackSvgPaths, trackStartCoords, trackMapImages } from '@/data/trackPaths';
 
 interface Driver { id: string; firstName: string; lastName: string; car: string; }
 interface Standing { driverId: string; rounds: (number | null)[]; total: number; }
@@ -38,6 +38,15 @@ function getRoundResults(roundNum: number): { winner: string | null; podium: { n
 }
 
 function MiniTrackMap({ slug }: { slug: string }) {
+  const imageUrl = trackMapImages[slug];
+  if (imageUrl) {
+    return (
+      <div className="w-12 h-12 rounded overflow-hidden bg-white flex items-center justify-center">
+        <img src={imageUrl} alt={slug} className="w-full h-full object-contain" />
+      </div>
+    );
+  }
+
   const path = trackSvgPaths[slug];
   const start = trackStartCoords[slug];
   if (!path) return <div className="w-12 h-12 bg-gray-800 rounded flex items-center justify-center text-xs text-gray-600">?</div>;
