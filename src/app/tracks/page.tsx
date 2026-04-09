@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import tracks from '@/data/tracks.json';
+import { trackSvgPaths, trackStartCoords } from '@/data/trackPaths';
 import React from 'react';
 
 interface Track {
@@ -30,55 +31,26 @@ interface Track {
   imageUrl: string | null;
 }
 
-// SVG Track Maps - simplified representations
-const trackSvgPaths: Record<string, string> = {
-  'trial-mountain': `
-    M 50,80 L 80,80 L 85,60 L 90,40 L 75,30 L 60,35 L 55,20 L 50,35 L 45,50 L 40,70 L 50,80
-  `,
-  'laguna-seca': `
-    M 50,20 L 70,25 L 75,45 L 70,65 L 50,70 L 35,60 L 30,40 L 35,25 L 50,20
-  `,
-  'spa-francorchamps': `
-    M 30,70 L 50,60 L 70,50 L 80,30 L 75,15 L 50,20 L 40,35 L 35,55 L 30,70
-  `,
-  'red-bull-ring': `
-    M 50,70 L 80,65 L 85,40 L 75,20 L 50,15 L 30,25 L 25,50 L 35,70 L 50,70
-  `,
-  'interlagos': `
-    M 30,30 L 70,25 L 80,50 L 75,75 L 40,80 L 25,60 L 30,30
-  `,
-  'deep-forest-raceway': `
-    M 50,80 L 75,70 L 80,50 L 70,25 L 50,20 L 30,35 L 25,55 L 40,75 L 50,80
-  `,
-};
-
 function MiniTrackMap({ slug }: { slug: string }) {
-  const path = trackSvgPaths[slug] || trackSvgPaths['trial-mountain'];
+  const path = trackSvgPaths[slug];
+  const start = trackStartCoords[slug];
+  if (!path) return <div className="w-full h-40 bg-racing-dark rounded-lg flex items-center justify-center text-gray-600">?</div>;
 
   return (
-    <svg
-      viewBox="0 0 100 100"
-      className="w-full h-40 bg-racing-dark rounded-lg"
-    >
-      <defs>
-        <linearGradient id={`grad-${slug}`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{ stopColor: '#1a1a1a', stopOpacity: 1 }} />
-          <stop
-            offset="100%"
-            style={{ stopColor: '#0a0a0a', stopOpacity: 1 }}
-          />
-        </linearGradient>
-      </defs>
-      <rect width="100" height="100" fill={`url(#grad-${slug})`} />
-      <path
-        d={path}
-        fill="none"
-        stroke="#FCD116"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="50" cy="80" r="1.5" fill="#CE1126" />
+    <svg viewBox="0 0 200 150" className="w-full h-40 bg-gradient-to-br from-gray-900 to-black rounded-lg p-3">
+      {/* Track glow */}
+      <path d={path} fill="none" stroke="#FCD116" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" opacity="0.12" />
+      {/* Track surface */}
+      <path d={path} fill="none" stroke="#555" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Racing line */}
+      <path d={path} fill="none" stroke="#FCD116" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Start/Finish */}
+      {start && (
+        <>
+          <circle cx={start.x} cy={start.y} r="5" fill="#CE1126" opacity="0.3" />
+          <circle cx={start.x} cy={start.y} r="3" fill="#CE1126" />
+        </>
+      )}
     </svg>
   );
 }
