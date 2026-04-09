@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "trial-mountain",
+    "name": "Trial Mountain",
+    "country": "Japan (Fictional)",
+    "lengthKm": 3.975,
+    "turns": 13,
+    "elevation": "Significant elevation changes",
+    "bio": "A classic Gran Turismo circuit that has tested drivers for generations with its technical blend of tight corners and flowing sections. Trial Mountain's distinctive elevation changes create dramatic sightlines and demand precise brake markers. The circuit's mid-section technical complexity rewards drivers who commit fully to the apex, while the long downhill sweepers demand aggressive throttle application and excellent car control.",
+    "characteristics": ["Elevation changes", "Tight mid-section", "Fast downhill sweepers", "Technical corners"],
+    "carSuitability": "Cars with strong braking and good traction out of slow corners excel here. The Porsche 911 RSR's rear-engine grip advantage shines in the technical sections, while the Audi R8's balanced chassis handles the elevation changes with composure. The nimble Supra rewards precision, but heavier machinery like the Viper demands brake discipline.",
+    "imageUrl": null
+  },
+  {
+    "slug": "laguna-seca",
+    "name": "Laguna Seca",
+    "country": "United States",
+    "lengthKm": 3.602,
+    "turns": 11,
+    "elevation": "High elevation changes",
+    "bio": "An unforgiving American classic nestled in California's coastal hills, Laguna Seca is famous for punishing mistakes with its dramatic elevation swings. The circuit's most iconic feature is the famous Corkscrew—a descending left-hand turn that demands absolute commitment. Every lap is a test of nerve and precision, with little margin for error on the tight technical sections.",
+    "characteristics": ["Corkscrew corner", "Elevation changes", "Tight technical sections", "High-speed sweepers"],
+    "carSuitability": "Laguna Seca demands cars with responsive steering and excellent brake stability on the elevation changes. The Porsche 911 RSR dominates here with its mid-engine weight distribution, while the Nissan GT-R's all-wheel-drive provides traction through the Corkscrew. The Audi R8 exploits its balanced setup on the technical infield sections.",
+    "imageUrl": null
+  },
+  {
+    "slug": "spa-francorchamps",
+    "name": "Spa-Francorchamps",
+    "country": "Belgium",
+    "lengthKm": 7.004,
+    "turns": 19,
+    "elevation": "Extreme elevation changes",
+    "bio": "One of the world's most iconic and demanding racing circuits, Spa-Francorchamps blends high-speed sections with treacherous weather conditions and epic elevation changes. Located in the Ardennes region, the track's undulating terrain creates constantly changing grip and balance, while the famed Eau Rouge demands respect at every visit. Spa's length and difficulty make it the ultimate test of driver skill and machine reliability.",
+    "characteristics": ["Eau Rouge corner", "Extreme elevation", "High-speed sections", "Weather-sensitive", "Fast flowing corners"],
+    "carSuitability": "Spa rewards raw speed and stability through high-speed sections, favoring powerful machines like the Porsche 911 RSR and BMW M4 GT Endurance. The circuit's long straights suit slipstreaming-capable cars, while the technical Eau Rouge demands balanced chassis setup. In wet conditions, all-wheel-drive machines like the Nissan GT-R gain significant advantage.",
+    "imageUrl": null
+  },
+  {
+    "slug": "red-bull-ring",
+    "name": "Red Bull Ring",
+    "country": "Austria",
+    "lengthKm": 4.326,
+    "turns": 10,
+    "elevation": "Moderate elevation changes",
+    "bio": "A high-speed, flowing circuit nestled in Austria's Alpine region, Red Bull Ring is the modern home of European motorsport excellence. The track emphasizes flat-out commitment and smooth inputs through its rapid-fire corner sequence. Despite its reputation as straightforward, the circuit is deceptively demanding—one mistake cascades into the next corner, requiring absolute concentration for a clean lap.",
+    "characteristics": ["High-speed corners", "Flowing sections", "Alpine setting", "Elevation changes", "Demanding sequence"],
+    "carSuitability": "Red Bull Ring favors balanced, agile machines that can handle rapid direction changes without sacrificing speed. The Porsche 911 RSR exploits its precision steering, while lighter cars like the Toyota Supra shine through the tight corner sequences. The BMW M4's raw power is ideal for the long acceleration zones between corner complexes.",
+    "imageUrl": null
+  },
+  {
+    "slug": "interlagos",
+    "name": "Interlagos",
+    "country": "Brazil",
+    "lengthKm": 4.309,
+    "turns": 15,
+    "elevation": "Moderate elevation changes",
+    "bio": "A proud symbol of Brazilian motorsport tradition, Interlagos is a tight, technical circuit that demands relentless precision and daring racecraft. The track's anticlockwise layout surprises drivers accustomed to clockwise circuits, while its numerous technical sections and elevation changes create constant opportunities for overtaking. Famous for its unpredictable weather and passionate crowds, Interlagos is where champions prove their mettle.",
+    "characteristics": ["Anticlockwise layout", "Technical sections", "Elevation changes", "Overtaking opportunities", "Brazilian tradition"],
+    "carSuitability": "Interlagos rewards smooth, precise driving with good low-speed traction. The Porsche 911 RSR's mid-engine characteristics excel through the tight sections, while the Audi R8 benefits from its balanced weight distribution. Lighter, more nimble cars like the Toyota Supra can exploit the tight corner geometry, while the Ferrari 458's natural handling bias suits the technical infield.",
+    "imageUrl": null
+  },
+  {
+    "slug": "deep-forest-raceway",
+    "name": "Deep Forest Raceway",
+    "country": "Japan (Fictional)",
+    "lengthKm": 5.022,
+    "turns": 18,
+    "elevation": "Significant elevation changes",
+    "bio": "A verdant Japanese circuit hidden among dense forest, Deep Forest Raceway is a moody, technical masterpiece that rewards racecraft and precision. The track's winding nature through the trees creates a claustrophobic, focused driving experience with minimal room for error. Variable elevation and countless direction changes make it one of Gran Turismo's most demanding technical circuits, where smooth inputs and impeccable braking are paramount.",
+    "characteristics": ["Winding forest layout", "Elevation changes", "Technical corners", "Limited overtaking", "Precision-demanding"],
+    "carSuitability": "Deep Forest Raceway heavily rewards balanced, technically proficient cars and drivers. The Audi R8's neutral handling and braking stability shine on this technical masterpiece, while the Porsche 911 RSR's mid-engine layout provides confidence through the endless corners. Lighter, nimble machinery like the Ferrari 458 and Toyota Supra exploit the tight geometry, while heavy, powerful cars struggle to find flow through the forest's technical demands.",
+    "imageUrl": null
+  }
+]

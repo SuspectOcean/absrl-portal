@@ -1,0 +1,306 @@
+[
+  {
+    "id": "mario-dornellas",
+    "firstName": "Mario",
+    "lastName": "Dornellas",
+    "initials": "MD",
+    "car": "Porsche 911 RSR (2017)",
+    "carSlug": "porsche-911-rsr-2017",
+    "number": 1,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A relentless precision driver who has dominated the first season with calculated aggression and unwavering consistency. Mario's Porsche 911 RSR is a commanding presence at the front of the grid, delivering wins across both track types and weather conditions. His five victories in five rounds underscore a championship-caliber performance that sets the standard for the entire field.",
+    "stats": {
+      "wins": 5,
+      "podiums": 5,
+      "bestFinish": 1,
+      "points": 118,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "stephen-corbin",
+    "firstName": "Stephen",
+    "lastName": "Corbin",
+    "initials": "SC",
+    "car": "Porsche 911 GT3 R (992) '22",
+    "carSlug": "porsche-911-gt3-r-992-22",
+    "number": 2,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A hard-charging competitor who brings aggressive energy to every race weekend. Stephen's modern Porsche 911 GT3 R showcases his ability to mix it at the front, with consistent points finishes and a pair of podium appearances keeping him firmly in championship contention. His adaptability across different track layouts marks him as Dornellas's closest challenger.",
+    "stats": {
+      "wins": 1,
+      "podiums": 4,
+      "bestFinish": 2,
+      "points": 85,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "luca-bruschi",
+    "firstName": "Luca",
+    "lastName": "Bruschi",
+    "initials": "LB",
+    "car": "Ferrari 296 GT3",
+    "carSlug": "ferrari-296-gt3",
+    "number": 3,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A smooth Prancing Horse pilot who leverages the Ferrari 296 GT3's hybrid power and balance to hunt for competitive results. Though early-season performances have yielded modest returns, Luca's technical driving style and racecraft suggest he's still finding the optimal setup window. With mid-season momentum building, his improvement trajectory could threaten the established pecking order.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 5,
+      "points": 16,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "charles-fernandez",
+    "firstName": "Charles",
+    "lastName": "Fernandez",
+    "initials": "CF",
+    "car": "Ferrari 458 Italia GT3",
+    "carSlug": "ferrari-458-italia-gt3",
+    "number": 4,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "An ambitious racer piloting one of the grid's most iconic machines, the Ferrari 458 Italia GT3. Charles brings passion and commitment to every lap, though adapting to the competitive demands of the league has proven challenging so far. His solid racecraft foundations suggest future success as he continues to develop in the highly competitive field.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 4,
+      "points": 12,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "bibi-erikkson",
+    "firstName": "Bibi",
+    "lastName": "Erikkson",
+    "initials": "BE",
+    "car": "BMW M4 GT Endurance Model",
+    "carSlug": "bmw-m4-gt-endurance-model",
+    "number": 5,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A tenacious competitor who has carved out a solid mid-field presence with the powerful BMW M4 GT Endurance. Bibi's consistent point-scoring across all five rounds demonstrates tactical awareness and reliable pace. The German machine's straightline speed advantage could translate into stronger results as the season reaches its decisive mid-point.",
+    "stats": {
+      "wins": 0,
+      "podiums": 1,
+      "bestFinish": 2,
+      "points": 53,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "ross-bloomfield",
+    "firstName": "Ross",
+    "lastName": "Bloomfield",
+    "initials": "RB",
+    "car": "Lamborghini Huracán GT3",
+    "carSlug": "lamborghini-hurcan-gt3",
+    "number": 6,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A determined Lamborghini pilot whose early season has been marked by struggle as he adapts to the high-speed aggression required in this ultra-competitive league. The Huracán GT3's raw power offers potential, but consistency and race-day confidence remain works in progress. Bloomfield's fighting spirit suggests breakthrough performances are waiting around the corner.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 1,
+      "points": 1,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "ali-fuller",
+    "firstName": "Ali",
+    "lastName": "Fuller",
+    "initials": "AF",
+    "car": "Toyota GR Supra Racing Concept",
+    "carSlug": "toyota-gr-supra-racing-concept",
+    "number": 7,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A smooth operator behind the wheel of the nimble Toyota GR Supra Racing Concept, a car that rewards precision over raw power. Ali's measured approach to racing yields steady point finishes and demonstrates his understanding of tire management and fuel strategy. While headline results have eluded him, his methodical improvement shows a driver learning the championship ropes.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 4,
+      "points": 26,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "luca-ascarelli",
+    "firstName": "Luca",
+    "lastName": "Ascarelli",
+    "initials": "LA",
+    "car": "Audi R8 LMS Evo '19",
+    "carSlug": "audi-r8-lms-evo-19",
+    "number": 8,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A technically gifted driver who exploits the Audi R8 LMS Evo's balanced chassis and mid-range power delivery with surgical precision. Luca's opening round showed a man capable of winning—his consistent runner-up finishes demonstrate raw speed and racecraft. A string of podium results establishes him as the league's legitimate second force and a genuine title threat.",
+    "stats": {
+      "wins": 0,
+      "podiums": 5,
+      "bestFinish": 2,
+      "points": 55,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "kai-ross",
+    "firstName": "Kai",
+    "lastName": "Ross",
+    "initials": "KR",
+    "car": "Nissan GT-R NISMO GT3",
+    "carSlug": "nissan-gt-r-nismo-gt3",
+    "number": 9,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "An explosive Japanese car enthusiast who commands the legendary Nissan GT-R NISMO GT3 with controlled intensity. Kai's solid points haul across the opening five rounds shows a driver growing into his craft, mixing qualifying success with race-day execution. The all-wheel-drive platform's traction advantage under varying conditions could unlock his full potential in the season's second half.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 3,
+      "points": 49,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "alex-mansoor",
+    "firstName": "Alex",
+    "lastName": "Mansoor",
+    "initials": "AM",
+    "car": "Lexus RC F GT3",
+    "carSlug": "lexus-rc-f-gt3",
+    "number": 10,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A tactical operator of the elegantly powerful Lexus RC F GT3, blending refinement with competitive intensity. Alex's recent surge—including a fifth-place finish in Round 5—signals a driver hitting his stride mid-season. His consistency and smart race management mark him as a mid-field stalwart capable of upsetting the hierarchy on any given Sunday.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 4,
+      "points": 40,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "sean-shoul",
+    "firstName": "Sean",
+    "lastName": "Shoul",
+    "initials": "SS",
+    "car": "Dodge Viper GTS-R GT3",
+    "carSlug": "dodge-viper-gts-r-gt3",
+    "number": 11,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A spirited American car enthusiast taking on the grid with the iconic Dodge Viper GTS-R GT3, a bruising machine that demands respect and commitment. Sean's early performances have been modest as he masters the Viper's raw power delivery and aggressive character. His determination to succeed in a field of more refined machinery reflects the underdog mentality that defines his racing approach.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 9,
+      "points": 3,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "jeff-d",
+    "firstName": "Jeff",
+    "lastName": "D",
+    "initials": "JD",
+    "car": "Mazda RX-Vision GT3 Concept",
+    "carSlug": "mazda-rx-vision-gt3-concept",
+    "number": 12,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A passionate rotary engine devotee piloting the innovative Mazda RX-Vision GT3 Concept, a car that rewards mechanical sympathy and smooth inputs. Jeff's entry into the league marks his progression into competitive sim racing, and while results have been limited, his commitment to mastering an unconventional platform speaks volumes about his dedication.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 10,
+      "points": 0,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "neil-gonsalves",
+    "firstName": "Neil",
+    "lastName": "Gonsalves",
+    "initials": "NG",
+    "car": "Genesis X GR3",
+    "carSlug": "genesis-x-gr3",
+    "number": 13,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A composed driver steering the sleek Genesis X GR3, Hyundai's premium sports car that represents cutting-edge GT racing technology. Neil's focus on building a strong foundation this season reflects a long-term approach to championship contention. As the season progresses, expect his growing familiarity with the platform to yield improved results.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 10,
+      "points": 0,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "cameron-browne",
+    "firstName": "Cameron",
+    "lastName": "Browne",
+    "initials": "CB",
+    "car": "Renault R.S.01 GT3",
+    "carSlug": "renault-rs-01-gt3",
+    "number": 14,
+    "status": "active",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A rapidly improving driver who has found his rhythm with the technically sophisticated Renault R.S.01 GT3. Cameron's stunning uptick in recent rounds—highlighted by a podium finish—demonstrates a driver emerging as a legitimate mid-field threat. His upward trajectory and strategic racecraft suggest competitive performances ahead as the championship enters its deciding phase.",
+    "stats": {
+      "wins": 0,
+      "podiums": 1,
+      "bestFinish": 3,
+      "points": 44,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "matthew-winter",
+    "firstName": "Matthew",
+    "lastName": "Winter",
+    "initials": "MW",
+    "car": "Unknown",
+    "carSlug": "unknown",
+    "number": 15,
+    "status": "former",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A competitor who made an early appearance in the championship. While results on track were limited, Winter's participation marked the beginning of the ABSRL's inaugural season.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 10,
+      "points": 0,
+      "dnfs": 0
+    }
+  },
+  {
+    "id": "derek-shoul",
+    "firstName": "Derek",
+    "lastName": "Shoul",
+    "initials": "DS",
+    "car": "Unknown",
+    "carSlug": "unknown",
+    "number": 16,
+    "status": "former",
+    "nationality": "Antigua & Barbuda",
+    "bio": "A driver who competed in select rounds during the league's opening season. Though limited appearances have resulted in minimal championship points, his participation adds to the depth of the ABSRL's competitive landscape.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "bestFinish": 9,
+      "points": 3,
+      "dnfs": 0
+    }
+  }
+]
