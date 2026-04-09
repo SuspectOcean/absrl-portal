@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/drivers', label: 'Drivers' },
   { href: '/races', label: 'Races' },
   { href: '/cars', label: 'Cars' },
+  { href: '/tracks', label: 'Tracks' },
   { href: '/about', label: 'About' },
 ];
 
@@ -28,7 +29,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1.5 group">
             <span className="text-lg font-bold text-white tracking-wider">ABSRL</span>
-            <div className="w-4 h-4 bg-gradient-to-r from-neon-cyan to-neon-orange rounded-sm group-hover:scale-110 transition-transform" />
+            <div className="w-4 h-4 bg-gradient-to-r from-antigua-gold to-antigua-red rounded-sm group-hover:scale-110 transition-transform" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -41,13 +42,13 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-xs font-medium transition-colors relative py-1 ${
                     active
-                      ? 'text-neon-cyan'
+                      ? 'text-antigua-gold'
                       : 'text-gray-400 hover:text-gray-200'
                   }`}
                 >
                   {link.label}
                   {active && (
-                    <div className="absolute bottom-0 left-0 right-0 h-px bg-neon-cyan" />
+                    <div className="absolute bottom-0 left-0 right-0 h-px bg-antigua-gold" />
                   )}
                 </Link>
               );
@@ -62,17 +63,17 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-1">
               <span
-                className={`block w-5 h-0.5 bg-neon-cyan transition-all ${
+                className={`block w-5 h-0.5 bg-antigua-gold transition-all ${
                   mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
                 }`}
               />
               <span
-                className={`block w-5 h-0.5 bg-neon-cyan transition-all ${
+                className={`block w-5 h-0.5 bg-antigua-gold transition-all ${
                   mobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`block w-5 h-0.5 bg-neon-cyan transition-all ${
+                className={`block w-5 h-0.5 bg-antigua-gold transition-all ${
                   mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
                 }`}
               />
@@ -93,7 +94,7 @@ export default function Navbar() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`px-3 py-1.5 rounded text-xs transition-colors ${
                       active
-                        ? 'bg-racing-light text-neon-cyan'
+                        ? 'bg-racing-light text-antigua-gold'
                         : 'text-gray-400 hover:bg-racing-light/50 hover:text-gray-200'
                     }`}
                   >

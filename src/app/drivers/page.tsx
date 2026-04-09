@@ -21,7 +21,7 @@ export default function DriversPage() {
     <div className="h-screen bg-racing-black text-white flex flex-col p-2 overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
-        <h1 className="text-sm font-bold text-neon-cyan">Drivers</h1>
+        <h1 className="text-sm font-bold text-antigua-gold">Drivers</h1>
         <span className="text-xs text-gray-400">Season 1</span>
       </div>
 
@@ -33,20 +33,20 @@ export default function DriversPage() {
             href={`/drivers/${driver.id}`}
             className={`rounded border transition-all ${
               driver.status === 'active'
-                ? 'border-neon-cyan/50 hover:border-neon-cyan bg-racing-dark/60 hover:bg-racing-dark'
+                ? 'border-antigua-gold/50 hover:border-antigua-gold bg-racing-dark/60 hover:bg-racing-dark'
                 : 'border-gray-600/30 bg-racing-dark/40 opacity-70 hover:opacity-90'
             }`}
           >
             <div className="p-2 text-center flex flex-col items-center">
               {/* Points Badge */}
-              <div className="absolute right-1 top-1 bg-neon-orange text-racing-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-8 text-center">
+              <div className="absolute right-1 top-1 bg-antigua-red text-racing-black text-xs font-bold px-1.5 py-0.5 rounded-full min-w-8 text-center">
                 {driver.stats.points}
               </div>
 
               {/* Initials */}
               <div className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold mb-1 ${
                 driver.status === 'active'
-                  ? 'bg-neon-cyan text-racing-black'
+                  ? 'bg-antigua-gold text-racing-black'
                   : 'bg-gray-600 text-gray-300'
               }`}>
                 {driver.initials}

@@ -21,12 +21,12 @@ export default function CarsPage() {
   return (
     <main className="h-screen bg-racing-black text-white overflow-hidden flex flex-col">
       {/* Header: one line */}
-      <div className="h-16 border-b border-neon-cyan/30 px-4 sm:px-6 flex items-center justify-between gap-4">
+      <div className="h-16 border-b border-antigua-gold/30 px-4 sm:px-6 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-black text-neon-cyan">The Grid</h1>
+          <h1 className="text-2xl font-black text-antigua-gold">The Grid</h1>
           <span className="text-xs text-gray-400">Season 1 Cars</span>
         </div>
-        <Link href="/cars" className="text-xs text-neon-orange hover:underline">
+        <Link href="/cars" className="text-xs text-antigua-red hover:underline">
           ← Back
         </Link>
       </div>
@@ -40,10 +40,10 @@ export default function CarsPage() {
               <Link
                 key={car.slug}
                 href={`/cars/${car.slug}`}
-                className="group h-full border border-neon-cyan/40 rounded bg-racing-dark hover:border-neon-cyan hover:bg-racing-gray transition-all p-2.5 flex flex-col"
+                className="group h-full border border-antigua-gold/40 rounded bg-racing-dark hover:border-antigua-gold hover:bg-racing-gray transition-all p-2.5 flex flex-col"
               >
                 {/* Car name - bold small */}
-                <h3 className="text-sm font-bold text-white group-hover:text-neon-cyan truncate">
+                <h3 className="text-sm font-bold text-white group-hover:text-antigua-gold truncate">
                   {car.name}
                 </h3>
 
@@ -54,8 +54,8 @@ export default function CarsPage() {
 
                 {/* Driver name linked - text-xs */}
                 {driver && (
-                  <div className="mt-1.5 pt-1.5 border-t border-neon-cyan/20">
-                    <p className="text-xs text-neon-cyan font-semibold truncate">
+                  <div className="mt-1.5 pt-1.5 border-t border-antigua-gold/20">
+                    <p className="text-xs text-antigua-gold font-semibold truncate">
                       {driver.firstName} {driver.lastName}
                     </p>
                   </div>
@@ -63,10 +63,10 @@ export default function CarsPage() {
 
                 {/* Specs: drivetrain, power, weight as tiny chips */}
                 <div className="mt-1.5 flex flex-wrap gap-1">
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 font-mono">
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs bg-antigua-gold/10 text-antigua-gold border border-antigua-gold/20 font-mono">
                     {car.drivetrain}
                   </span>
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs bg-neon-orange/10 text-neon-orange border border-neon-orange/20 font-mono">
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs bg-antigua-red/10 text-antigua-red border border-antigua-red/20 font-mono">
                     {car.power.split(' ')[0]}
                   </span>
                   <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs bg-gray-700/50 text-gray-300 border border-gray-600 font-mono">

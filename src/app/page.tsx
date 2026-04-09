@@ -35,11 +35,11 @@ export default function Home() {
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage:
-              'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 240, 255, 0.03) 2px, rgba(0, 240, 255, 0.03) 4px)',
+              'repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(252, 209, 22, 0.03) 2px, rgba(252, 209, 22, 0.03) 4px)',
           }}
         />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-neon-orange rounded-full filter blur-3xl opacity-5" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-neon-cyan rounded-full filter blur-3xl opacity-5" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-antigua-red rounded-full filter blur-3xl opacity-5" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-antigua-gold rounded-full filter blur-3xl opacity-5" />
       </div>
 
       {/* Content wrapper */}
@@ -47,7 +47,7 @@ export default function Home() {
         {/* Top strip: 80px */}
         <div className="h-20 border-b border-gray-800 flex items-center px-4 sm:px-6 justify-between gap-4">
           <div className="flex items-center gap-2">
-            <h1 className="text-3xl font-black tracking-tight bg-gradient-to-r from-neon-cyan to-neon-orange bg-clip-text text-transparent">
+            <h1 className="text-3xl font-black tracking-tight bg-gradient-to-r from-antigua-gold to-antigua-red bg-clip-text text-transparent">
               ABSRL
             </h1>
             <div className="hidden sm:block text-xs text-gray-500 font-light">
@@ -57,13 +57,13 @@ export default function Home() {
           <div className="flex gap-2">
             <Link
               href="/standings"
-              className="px-3 py-1.5 bg-neon-cyan text-racing-black font-bold text-xs rounded hover:bg-cyan-400 transition-colors"
+              className="px-3 py-1.5 bg-antigua-gold text-racing-black font-bold text-xs rounded hover:bg-yellow-500 transition-colors"
             >
               Standings
             </Link>
             <Link
               href="/drivers"
-              className="px-3 py-1.5 bg-neon-orange text-white font-bold text-xs rounded hover:bg-orange-600 transition-colors"
+              className="px-3 py-1.5 bg-antigua-red text-white font-bold text-xs rounded hover:bg-red-700 transition-colors"
             >
               Drivers
             </Link>
@@ -83,21 +83,21 @@ export default function Home() {
                     <tr
                       key={driver.id}
                       className={`border-b border-gray-800 last:border-b-0 ${
-                        idx === 0 ? 'bg-neon-cyan/10' : ''
+                        idx === 0 ? 'bg-antigua-gold/10' : ''
                       } hover:bg-gray-900/50 transition-colors`}
                     >
-                      <td className="px-2 py-1 font-bold w-8 text-neon-orange">
+                      <td className="px-2 py-1 font-bold w-8 text-antigua-red">
                         {idx + 1}
                       </td>
                       <td className="px-2 py-1 truncate">
                         <Link
                           href={`/drivers/${driver.id}`}
-                          className="hover:text-neon-cyan transition-colors text-xs font-semibold"
+                          className="hover:text-antigua-gold transition-colors text-xs font-semibold"
                         >
                           {driver.firstName} {driver.lastName}
                         </Link>
                       </td>
-                      <td className="px-2 py-1 text-right font-bold text-neon-cyan text-xs">
+                      <td className="px-2 py-1 text-right font-bold text-antigua-gold text-xs">
                         {driver.stats.points}
                       </td>
                     </tr>
@@ -112,7 +112,7 @@ export default function Home() {
             {/* Next Race */}
             <div className="border border-gray-800 rounded p-3 bg-gradient-to-br from-racing-dark/50 to-black/50">
               <div className="flex items-center gap-2 mb-1">
-                <div className="w-2 h-2 bg-neon-cyan rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-antigua-gold rounded-full animate-pulse" />
                 <span className="text-xs uppercase text-gray-500 font-bold tracking-wider">
                   Next Race
                 </span>
@@ -129,13 +129,13 @@ export default function Home() {
                 <span className="text-xs uppercase text-gray-500 font-bold tracking-wider">
                   Progress
                 </span>
-                <span className="text-xs font-bold text-neon-cyan">
+                <span className="text-xs font-bold text-antigua-gold">
                   {roundsCompleted}/{league.totalRounds}
                 </span>
               </div>
               <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-neon-cyan to-neon-orange transition-all"
+                  className="h-full bg-gradient-to-r from-antigua-gold to-antigua-red transition-all"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -148,7 +148,7 @@ export default function Home() {
                   <p className="text-gray-500 font-bold uppercase tracking-wider mb-0.5">
                     Drivers
                   </p>
-                  <p className="text-lg font-black text-neon-cyan">
+                  <p className="text-lg font-black text-antigua-gold">
                     {activeDrivers.length}
                   </p>
                 </div>
@@ -156,7 +156,7 @@ export default function Home() {
                   <p className="text-gray-500 font-bold uppercase tracking-wider mb-0.5">
                     Tracks
                   </p>
-                  <p className="text-lg font-black text-neon-orange">
+                  <p className="text-lg font-black text-antigua-red">
                     {uniqueTracks}
                   </p>
                 </div>
@@ -164,7 +164,7 @@ export default function Home() {
                   <p className="text-gray-500 font-bold uppercase tracking-wider mb-0.5">
                     Rounds
                   </p>
-                  <p className="text-lg font-black text-neon-cyan">
+                  <p className="text-lg font-black text-antigua-gold">
                     {roundsCompleted}
                   </p>
                 </div>
@@ -172,7 +172,7 @@ export default function Home() {
                   <p className="text-gray-500 font-bold uppercase tracking-wider mb-0.5">
                     Season
                   </p>
-                  <p className="text-lg font-black text-neon-orange">
+                  <p className="text-lg font-black text-antigua-red">
                     {league.season}
                   </p>
                 </div>
@@ -190,7 +190,7 @@ export default function Home() {
               <div className="pt-2 border-t border-gray-700">
                 <Link
                   href={`/races/${completedRounds[completedRounds.length - 1]?.id}`}
-                  className="text-xs text-neon-cyan font-bold uppercase tracking-wider hover:underline"
+                  className="text-xs text-antigua-gold font-bold uppercase tracking-wider hover:underline"
                 >
                   Full Results →
                 </Link>

@@ -61,7 +61,7 @@ export default async function DriverPage({ params }: { params: Promise<{ id: str
   if (!driver) {
     return (
       <div className="min-h-screen bg-racing-black text-white p-4">
-        <Link href="/drivers" className="text-neon-cyan hover:text-neon-orange">
+        <Link href="/drivers" className="text-antigua-gold hover:text-antigua-red">
           ← Drivers
         </Link>
         <p className="mt-4 text-gray-400">Not found.</p>
@@ -76,12 +76,12 @@ export default async function DriverPage({ params }: { params: Promise<{ id: str
   return (
     <div className="min-h-screen bg-racing-black text-white">
       {/* Header Bar */}
-      <div className="border-b border-neon-cyan/20 px-6 py-4 md:px-8">
+      <div className="border-b border-antigua-gold/20 px-6 py-4 md:px-8">
         <div className="flex items-center justify-between">
-          <Link href="/drivers" className="text-neon-cyan hover:text-neon-orange text-xs font-bold">
+          <Link href="/drivers" className="text-antigua-gold hover:text-antigua-red text-xs font-bold">
             ← DRIVERS
           </Link>
-          <div className="bg-neon-orange/10 border border-neon-orange text-neon-orange px-2 py-1 rounded text-xs font-bold">
+          <div className="bg-antigua-red/10 border border-antigua-red text-antigua-red px-2 py-1 rounded text-xs font-bold">
             #{driver.number}
           </div>
         </div>
@@ -92,7 +92,7 @@ export default async function DriverPage({ params }: { params: Promise<{ id: str
         <div className="max-w-3xl">
           {/* Header: Avatar + Name/Status + Car */}
           <div className="mb-6 flex items-start gap-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-neon-cyan bg-neon-cyan/10 text-lg font-bold text-neon-cyan flex-shrink-0">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-antigua-gold bg-antigua-gold/10 text-lg font-bold text-antigua-gold flex-shrink-0">
               {driver.initials}
             </div>
             <div className="flex-1 min-w-0">
@@ -116,11 +116,11 @@ export default async function DriverPage({ params }: { params: Promise<{ id: str
           <div className="mb-6 grid grid-cols-2 gap-2 md:grid-cols-5">
             <div className="bg-racing-dark border border-gray-800 rounded p-2">
               <div className="text-xs text-gray-500 font-semibold">PTS</div>
-              <div className="text-lg font-bold text-neon-cyan">{driver.stats.points}</div>
+              <div className="text-lg font-bold text-antigua-gold">{driver.stats.points}</div>
             </div>
             <div className="bg-racing-dark border border-gray-800 rounded p-2">
               <div className="text-xs text-gray-500 font-semibold">W</div>
-              <div className="text-lg font-bold text-neon-orange">{driver.stats.wins}</div>
+              <div className="text-lg font-bold text-antigua-red">{driver.stats.wins}</div>
             </div>
             <div className="bg-racing-dark border border-gray-800 rounded p-2">
               <div className="text-xs text-gray-500 font-semibold">POD</div>
@@ -143,7 +143,7 @@ export default async function DriverPage({ params }: { params: Promise<{ id: str
 
           {/* Season Results Bar Chart */}
           <div className="bg-racing-dark border border-gray-800 rounded p-3 mb-6">
-            <h3 className="text-xs font-bold text-neon-cyan mb-2">SEASON (R1–R8)</h3>
+            <h3 className="text-xs font-bold text-antigua-gold mb-2">SEASON (R1–R8)</h3>
             <div className="flex items-end gap-1 h-16">
               {roundPoints.map((points, idx) => (
                 <div key={idx} className="flex flex-col items-center flex-1">
@@ -161,7 +161,7 @@ export default async function DriverPage({ params }: { params: Promise<{ id: str
             </div>
             <div className="mt-2 grid grid-cols-4 gap-1 text-xs md:grid-cols-8">
               {roundPoints.map((points, idx) => (
-                <div key={idx} className="text-center font-semibold text-neon-orange">
+                <div key={idx} className="text-center font-semibold text-antigua-red">
                   {points ?? '—'}
                 </div>
               ))}
@@ -171,7 +171,7 @@ export default async function DriverPage({ params }: { params: Promise<{ id: str
           {/* Car Specs */}
           {carData && (
             <div className="bg-racing-dark border border-gray-800 rounded p-3">
-              <h3 className="text-xs font-bold text-neon-cyan mb-2">VEHICLE</h3>
+              <h3 className="text-xs font-bold text-antigua-gold mb-2">VEHICLE</h3>
               <div className="grid grid-cols-2 gap-2 text-xs md:grid-cols-4">
                 <div>
                   <div className="text-gray-500 font-semibold">Class</div>

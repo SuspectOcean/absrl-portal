@@ -19,8 +19,8 @@ export default function AboutPage() {
   return (
     <main className="h-screen bg-racing-black text-white overflow-hidden flex flex-col">
       {/* Header */}
-      <div className="h-16 border-b border-neon-cyan/30 px-4 sm:px-6 flex items-center">
-        <h1 className="text-2xl font-black text-neon-cyan">About ABSRL</h1>
+      <div className="h-16 border-b border-antigua-gold/30 px-4 sm:px-6 flex items-center">
+        <h1 className="text-2xl font-black text-antigua-gold">About ABSRL</h1>
       </div>
 
       {/* Content: Two columns on desktop */}
@@ -39,7 +39,7 @@ export default function AboutPage() {
             </div>
 
             {/* How to Join */}
-            <div className="mt-4 pt-4 border-t border-neon-cyan/20">
+            <div className="mt-4 pt-4 border-t border-antigua-gold/20">
               <p className="text-xs uppercase font-bold text-gray-400 tracking-wider mb-1">
                 How to Join
               </p>
@@ -59,7 +59,7 @@ export default function AboutPage() {
               <ul className="text-xs text-gray-400 space-y-1">
                 {league.rules.slice(0, 5).map((rule, idx) => (
                   <li key={idx} className="flex gap-2">
-                    <span className="text-neon-cyan flex-shrink-0">•</span>
+                    <span className="text-antigua-gold flex-shrink-0">•</span>
                     <span>{rule}</span>
                   </li>
                 ))}
@@ -68,21 +68,21 @@ export default function AboutPage() {
 
             {/* Stats Boxes */}
             <div className="grid grid-cols-2 gap-2">
-              <div className="border border-neon-cyan/30 rounded p-2.5 bg-racing-dark">
+              <div className="border border-antigua-gold/30 rounded p-2.5 bg-racing-dark">
                 <p className="text-xs text-gray-400 font-bold">Drivers</p>
-                <p className="text-xl font-black text-neon-cyan">{activeDrivers.length}</p>
+                <p className="text-xl font-black text-antigua-gold">{activeDrivers.length}</p>
               </div>
-              <div className="border border-neon-cyan/30 rounded p-2.5 bg-racing-dark">
+              <div className="border border-antigua-gold/30 rounded p-2.5 bg-racing-dark">
                 <p className="text-xs text-gray-400 font-bold">Rounds</p>
-                <p className="text-xl font-black text-neon-orange">{league.totalRounds}</p>
+                <p className="text-xl font-black text-antigua-red">{league.totalRounds}</p>
               </div>
-              <div className="border border-neon-cyan/30 rounded p-2.5 bg-racing-dark">
+              <div className="border border-antigua-gold/30 rounded p-2.5 bg-racing-dark">
                 <p className="text-xs text-gray-400 font-bold">Races</p>
-                <p className="text-xl font-black text-neon-cyan">{totalRaces}</p>
+                <p className="text-xl font-black text-antigua-gold">{totalRaces}</p>
               </div>
-              <div className="border border-neon-cyan/30 rounded p-2.5 bg-racing-dark">
+              <div className="border border-antigua-gold/30 rounded p-2.5 bg-racing-dark">
                 <p className="text-xs text-gray-400 font-bold">Tracks</p>
-                <p className="text-xl font-black text-neon-orange">{uniqueTracks}</p>
+                <p className="text-xl font-black text-antigua-red">{uniqueTracks}</p>
               </div>
             </div>
           </div>

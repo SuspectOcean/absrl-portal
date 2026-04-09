@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-racing-black: #0a0a0a;
-  --color-racing-dark: #111111;
-  --color-racing-gray: #1a1a1a;
-  --color-racing-light: #2a2a2a;
-  --color-neon-cyan: #00f0ff;
-  --color-neon-orange: #ff6b00;
-  --color-neon-cyan-dim: #00a0aa;
-  --color-neon-orange-dim: #cc5500;
+  --color-racing-black: #000000;
+  --color-racing-dark: #0a0a0a;
+  --color-racing-gray: #141414;
+  --color-racing-light: #1e1e1e;
+  --color-antigua-gold: #FCD116;
+  --color-antigua-red: #CE1126;
+  --color-antigua-blue: #0072C6;
+  --color-antigua-gold-dim: #c9a811;
+  --color-antigua-red-dim: #a00e1e;
+  --color-antigua-blue-dim: #005a9e;
 }
 
 html {
@@ -17,7 +19,7 @@ html {
 }
 
 body {
-  background: #0a0a0a;
+  background: #000000;
   color: #e5e7eb;
   font-family: system-ui, -apple-system, sans-serif;
 }
@@ -28,7 +30,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -41,7 +43,7 @@ body {
 }
 
 * {
-  scrollbar-color: #333 #0a0a0a;
+  scrollbar-color: #333 #000;
   scrollbar-width: thin;
 }
 
@@ -51,46 +53,59 @@ body {
       -45deg,
       transparent,
       transparent 10px,
-      rgba(0, 240, 255, 0.03) 10px,
-      rgba(0, 240, 255, 0.03) 20px
+      rgba(252, 209, 22, 0.03) 10px,
+      rgba(252, 209, 22, 0.03) 20px
     );
   }
 
   .gradient-border {
     position: relative;
-    background: linear-gradient(90deg, #0a0a0a, #0a0a0a) content-box;
-    background-clip: content-box;
     border: 2px solid transparent;
     background-image:
-      linear-gradient(#0a0a0a, #0a0a0a),
-      linear-gradient(90deg, #00f0ff, #ff6b00);
+      linear-gradient(#000, #000),
+      linear-gradient(90deg, #FCD116, #CE1126);
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
   }
 
-  .animated-gradient-border {
-    position: relative;
-    background: linear-gradient(90deg, #0a0a0a, #0a0a0a) content-box;
-    background-clip: content-box;
-    border: 2px solid transparent;
-    animation: borderFlow 3s linear infinite;
+  .antigua-gradient {
+    background: linear-gradient(135deg, #FCD116 0%, #CE1126 50%, #0072C6 100%);
+  }
+
+  .antigua-text-gradient {
+    background: linear-gradient(90deg, #FCD116, #CE1126);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .flag-stripe {
+    background: linear-gradient(180deg,
+      #000000 0%, #000000 25%,
+      #0072C6 25%, #0072C6 35%,
+      #FFFFFF 35%, #FFFFFF 45%,
+      #FCD116 45%, #FCD116 55%,
+      #FFFFFF 55%, #FFFFFF 65%,
+      #0072C6 65%, #0072C6 75%,
+      #000000 75%, #000000 100%
+    );
   }
 }
 
 @keyframes borderFlow {
   0% {
     background-image:
-      linear-gradient(#0a0a0a, #0a0a0a),
-      linear-gradient(90deg, #00f0ff 0%, #ff6b00 100%);
+      linear-gradient(#000, #000),
+      linear-gradient(90deg, #FCD116 0%, #CE1126 100%);
   }
   50% {
     background-image:
-      linear-gradient(#0a0a0a, #0a0a0a),
-      linear-gradient(90deg, #ff6b00 0%, #00f0ff 100%);
+      linear-gradient(#000, #000),
+      linear-gradient(90deg, #CE1126 0%, #0072C6 100%);
   }
   100% {
     background-image:
-      linear-gradient(#0a0a0a, #0a0a0a),
-      linear-gradient(90deg, #00f0ff 0%, #ff6b00 100%);
+      linear-gradient(#000, #000),
+      linear-gradient(90deg, #FCD116 0%, #CE1126 100%);
   }
 }
