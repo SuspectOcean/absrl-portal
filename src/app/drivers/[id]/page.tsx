@@ -45,8 +45,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const driver = (drivers as Driver[]).find((d) => d.id === params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const driver = (drivers as Driver[]).find((d) => d.id === id);
   if (!driver) return { title: 'Driver Not Found' };
   return {
     title: `${driver.firstName} ${driver.lastName} | ABSRL GT7`,
@@ -54,8 +55,9 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default function DriverPage({ params }: { params: { id: string } }) {
-  const driver = (drivers as Driver[]).find((d) => d.id === params.id) as Driver | undefined;
+export default async function DriverPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const driver = (drivers as Driver[]).find((d) => d.id === id) as Driver | undefined;
   if (!driver) {
     return (
       <div className="min-h-screen bg-racing-black text-white p-4">
