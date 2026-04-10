@@ -184,6 +184,19 @@ export default function AdminDashboard() {
         {/* Management Links */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Link
+            href="/admin/results"
+            className="bg-racing-dark border-2 border-antigua-gold/50 rounded-lg p-6 hover:border-antigua-gold transition group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <h2 className="text-xl font-bold text-antigua-gold group-hover:text-yellow-300">
+                Race Results
+              </h2>
+              <span className="text-gray-500 group-hover:text-gray-300">→</span>
+            </div>
+            <p className="text-gray-400 text-sm">Enter weekly race results with F1 scoring (P1-P16)</p>
+          </Link>
+
+          <Link
             href="/admin/drivers"
             className="bg-racing-dark border border-antigua-gold/30 rounded-lg p-6 hover:border-antigua-gold/60 transition group"
           >
@@ -193,7 +206,7 @@ export default function AdminDashboard() {
               </h2>
               <span className="text-gray-500 group-hover:text-gray-300">→</span>
             </div>
-            <p className="text-gray-400 text-sm">Edit driver profiles, stats, and information</p>
+            <p className="text-gray-400 text-sm">Create/edit driver profiles and car assignments</p>
           </Link>
 
           <Link
@@ -206,7 +219,7 @@ export default function AdminDashboard() {
               </h2>
               <span className="text-gray-500 group-hover:text-gray-300">→</span>
             </div>
-            <p className="text-gray-400 text-sm">Manage race details, settings, and recaps</p>
+            <p className="text-gray-400 text-sm">Create rounds with full GT7 race settings</p>
           </Link>
 
           <Link
@@ -219,7 +232,7 @@ export default function AdminDashboard() {
               </h2>
               <span className="text-gray-500 group-hover:text-gray-300">→</span>
             </div>
-            <p className="text-gray-400 text-sm">Update driver points and championship standings</p>
+            <p className="text-gray-400 text-sm">View/edit championship standings</p>
           </Link>
 
           <Link
@@ -232,7 +245,7 @@ export default function AdminDashboard() {
               </h2>
               <span className="text-gray-500 group-hover:text-gray-300">→</span>
             </div>
-            <p className="text-gray-400 text-sm">Manage vehicle specifications and details</p>
+            <p className="text-gray-400 text-sm">Manage vehicle specifications</p>
           </Link>
 
           <Link
@@ -245,7 +258,7 @@ export default function AdminDashboard() {
               </h2>
               <span className="text-gray-500 group-hover:text-gray-300">→</span>
             </div>
-            <p className="text-gray-400 text-sm">Edit track information and characteristics</p>
+            <p className="text-gray-400 text-sm">Edit track info and analysis</p>
           </Link>
 
           <Link
@@ -258,7 +271,20 @@ export default function AdminDashboard() {
               </h2>
               <span className="text-gray-500 group-hover:text-gray-300">→</span>
             </div>
-            <p className="text-gray-400 text-sm">Configure league info and rules</p>
+            <p className="text-gray-400 text-sm">Configure league rules</p>
+          </Link>
+
+          <Link
+            href="/admin/setup"
+            className="bg-racing-dark border border-dashed border-antigua-gold/30 rounded-lg p-6 hover:border-antigua-gold/60 transition group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <h2 className="text-xl font-bold text-antigua-gold group-hover:text-yellow-300">
+                Google Sheets Setup
+              </h2>
+              <span className="text-gray-500 group-hover:text-gray-300">→</span>
+            </div>
+            <p className="text-gray-400 text-sm">Connect Google Sheets database and seed data</p>
           </Link>
         </div>
       </div>

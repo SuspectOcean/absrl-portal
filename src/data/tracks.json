@@ -219,5 +219,42 @@
       {"car": "Porsche 911 RSR (2017)", "rating": 4, "reason": "Mid-engine balance shines in technical, flowing sections."}
     ],
     "imageUrl": null
+  },
+  {
+    "slug": "autopolis",
+    "name": "Autopolis",
+    "location": "Hita, Oita",
+    "country": "Japan",
+    "type": "Real Circuit",
+    "length": "4.674 km",
+    "turns": 18,
+    "elevation": "52m",
+    "longestStraight": "902m",
+    "surface": "Asphalt",
+    "direction": "Clockwise",
+    "description": "A challenging Japanese circuit nestled in the mountains of Oita Prefecture. Autopolis combines long straights with tight technical sections, dramatic elevation changes, and notoriously changeable weather. The circuit's exposed hilltop location makes it especially punishing in wet conditions.",
+    "keyCorners": [
+      {"name": "Turn 1 Hairpin", "type": "Heavy Braking", "description": "Tight right-hander at the end of the main straight. Prime overtaking opportunity with heavy braking from top speed."},
+      {"name": "Bridge Corner (T5-6)", "type": "High Speed", "description": "Fast sweeping section over the bridge. Requires commitment and confidence in the car's aero grip."},
+      {"name": "Turn 10 Hairpin", "type": "Hairpin", "description": "Tight left-hand hairpin at the lowest point. Traction on exit is critical for the uphill run."},
+      {"name": "Final Chicane (T17-18)", "type": "Medium Speed", "description": "Technical chicane before the main straight. Exit speed defines lap time."}
+    ],
+    "characteristics": ["18 technical corners", "52m elevation change", "Exposed hilltop weather", "902m main straight", "Mix of fast and slow"],
+    "analysis": {
+      "topSpeed": 4,
+      "braking": 4,
+      "cornering": 4,
+      "elevation": 4,
+      "overtaking": 3
+    },
+    "carSuitability": [
+      {"car": "Mazda RX-Vision GT3 Concept", "rating": 4, "reason": "Lightweight chassis excels in the technical sections. Less exposed on the straight than at Red Bull Ring."},
+      {"car": "Dodge Viper GTS-R GT3", "rating": 4, "reason": "Power advantage on the 900m straight. Wet conditions add challenge but the V10 torque helps."},
+      {"car": "Nissan GT-R NISMO GT3", "rating": 5, "reason": "AWD traction is a massive advantage in Autopolis's wet conditions. Strong through technical sections."},
+      {"car": "Audi R8 LMS Evo '19", "rating": 4, "reason": "Balanced chassis handles the mix of corners well. Predictable in changing conditions."},
+      {"car": "BMW M4 GT Endurance Model", "rating": 4, "reason": "Power for the straight and strong braking into Turn 1. FR layout manageable in wet."},
+      {"car": "Toyota GR Supra Racing Concept", "rating": 3, "reason": "Nimble through corners but power deficit on the main straight hurts."}
+    ],
+    "imageUrl": null
   }
 ]

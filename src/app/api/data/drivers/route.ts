@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
-import drivers from "@/data/drivers.json";
+import { getDrivers } from "@/lib/data-layer";
 
 export async function GET() {
-  return NextResponse.json(drivers);
+  try {
+    const drivers = await getDrivers();
+    return NextResponse.json(drivers);
+  } catch {
+    // Fallback to static JSON
+    const data = await import("@/data/drivers.json");
+    return NextResponse.json(data.default || data);
+  }
 }

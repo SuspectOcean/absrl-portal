@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
-import tracks from "@/data/tracks.json";
+import { getTracks } from "@/lib/data-layer";
 
 export async function GET() {
-  return NextResponse.json(tracks);
+  try {
+    const tracks = await getTracks();
+    return NextResponse.json(tracks);
+  } catch {
+    const data = await import("@/data/tracks.json");
+    return NextResponse.json(data.default || data);
+  }
 }

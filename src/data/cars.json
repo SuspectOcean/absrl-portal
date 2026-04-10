@@ -236,5 +236,22 @@
     "driver": "Cameron Browne",
     "description": "A technically sophisticated French racing machine. The R.S.01 GT3 delivers responsive handling and eager mid-corner rotation wrapped in an angular, purposeful design. Cameron Browne's improving form suggests he's unlocking this machine's competitive potential.",
     "imageUrl": null
+  },
+  {
+    "slug": "mitsubishi-lancer-evolution-final-edition-gr3",
+    "name": "Mitsubishi Lancer Evolution Final Edition Gr.3",
+    "make": "Mitsubishi",
+    "class": "Gr.3",
+    "drivetrain": "4WD",
+    "engine": "2.0L I4 Turbo",
+    "power": "480 HP",
+    "torque": "550 Nm",
+    "weight": "1,250 kg",
+    "topSpeed": "285 km/h",
+    "strengths": ["All-wheel drive traction", "Strong in wet conditions", "Predictable handling"],
+    "weaknesses": ["Lower power output", "Struggles on long straights"],
+    "driver": "Diego Shoul",
+    "description": "The legendary Lancer Evolution reimagined as a GT3 competitor. The all-wheel drive system provides exceptional traction and confidence, especially in mixed conditions. While it lacks the raw power of some rivals, its predictable handling and mechanical grip make it a capable tool in skilled hands.",
+    "imageUrl": null
   }
 ]

@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
-import races from "@/data/races.json";
+import { getRaces } from "@/lib/data-layer";
 
 export async function GET() {
-  return NextResponse.json(races);
+  try {
+    const races = await getRaces();
+    return NextResponse.json(races);
+  } catch {
+    const data = await import("@/data/races.json");
+    return NextResponse.json(data.default || data);
+  }
 }
