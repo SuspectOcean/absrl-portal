@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import races from '@/data/races.json';
-import drivers from '@/data/drivers.json';
-import standings from '@/data/standings.json';
+import { getRaces, getDrivers, getStandings } from '@/lib/data-layer';
 import { trackSvgPaths, trackStartCoords, trackMapImages } from '@/data/trackPaths';
 
 interface Driver { id: string; firstName: string; lastName: string; car: string; }
 interface Standing { driverId: string; rounds: (number | null)[]; total: number; }
+interface RaceSetting { track: string; trackSlug: string; group: string; laps: number | string | null; bop: boolean; fuel: string | null; tireWear: string | null; weather: string | null; pitStrategy: string | null; tireAllowance: string | null; collisionPenalty: boolean; shortcutPenalty: boolean; ghosting: boolean; grid: string | null; start: string | null; damage: string | null; qualifying: string | null; tuning: string | null; }
+interface Race { id: string; round: number; status: string; races: RaceSetting[]; recap: string | null; }
 
 export const metadata: Metadata = {
   title: 'Race Calendar | ABSRL GT7',
   description: 'Season 2 — 8 rounds of GT7 racing action.',
 };
+
+export const dynamic = 'force-dynamic';
 
 function weatherIcon(weather: string | null): string {
   if (!weather) return '❓';
@@ -22,9 +24,7 @@ function weatherIcon(weather: string | null): string {
   return '🌤️';
 }
 
-function getRoundResults(roundNum: number): { winner: string | null; podium: { name: string; pts: number }[] } {
-  const standingsArray = standings as Standing[];
-  const driverMap = new Map<string, Driver>((drivers as Driver[]).map((d) => [d.id, d]));
+function getRoundResults(roundNum: number, standingsArray: Standing[], driverMap: Map<string, Driver>): { winner: string | null; podium: { name: string; pts: number }[] } {
   const results = standingsArray
     .filter((s) => s.rounds[roundNum - 1] !== null && s.rounds[roundNum - 1]! > 0)
     .sort((a, b) => (b.rounds[roundNum - 1] || 0) - (a.rounds[roundNum - 1] || 0));
@@ -82,7 +82,7 @@ function TireBadges({ allowance }: { allowance: string | null }) {
   );
 }
 
-function strategyTip(race: { pitStrategy: string | null; tireAllowance: string | null; fuel: string | null; tireWear: string | null; weather: string | null; laps: number | null }): string {
+function strategyTip(race: { pitStrategy: string | null; tireAllowance: string | null; fuel: string | null; tireWear: string | null; weather: string | null; laps: number | string | null }): string {
   const tips: string[] = [];
   if (race.tireWear) {
     const wear = parseInt(race.tireWear);
@@ -104,7 +104,16 @@ function strategyTip(race: { pitStrategy: string | null; tireAllowance: string |
   return tips.length > 0 ? tips[0] : 'Standard strategy';
 }
 
-export default function RacesPage() {
+export default async function RacesPage() {
+  const [races, drivers, standings] = await Promise.all([
+    getRaces() as Promise<Race[]>,
+    getDrivers() as Promise<Driver[]>,
+    getStandings() as Promise<Standing[]>,
+  ]);
+
+  const driverMap = new Map<string, Driver>(drivers.map((d) => [d.id, d]));
+  const standingsArray = standings;
+
   return (
     <div className="bg-racing-black text-white">
       {/* Compact Header */}
@@ -125,7 +134,8 @@ export default function RacesPage() {
           {races.map((race) => {
             const isCompleted = race.status === 'completed';
             const raceData = race.races[1] || race.races[0];
-            const results = isCompleted ? getRoundResults(race.round) : null;
+            const hasData = !!raceData;
+            const results = isCompleted ? getRoundResults(race.round, standingsArray, driverMap) : null;
 
             return (
               <Link
@@ -141,7 +151,7 @@ export default function RacesPage() {
                   {/* Round Badge + Track Map */}
                   <div className={`flex flex-col items-center justify-center px-3 py-3 border-r ${isCompleted ? 'border-antigua-gold/20' : 'border-gray-700/30'} min-w-[72px]`}>
                     <span className={`text-lg font-black ${isCompleted ? 'text-antigua-gold' : 'text-gray-500'}`}>R{race.round}</span>
-                    {raceData && raceData.trackSlug !== 'track-tba' ? (
+                    {hasData && raceData.trackSlug !== 'track-tba' ? (
                       <MiniTrackMap slug={raceData.trackSlug} />
                     ) : (
                       <div className="w-12 h-12 flex items-center justify-center text-gray-600 text-lg">?</div>
@@ -159,12 +169,12 @@ export default function RacesPage() {
                       )}
                     </div>
 
-                    {isCompleted && raceData ? (
+                    {hasData ? (
                       <>
                         <div className="flex items-center gap-3 text-xs mb-1.5">
                           <span title="Weather">{weatherIcon(raceData.weather)} {raceData.weather?.split(',')[0] || 'TBA'}</span>
                           <span className="text-gray-600">|</span>
-                          <span title="Laps" className="text-gray-400">🏁 {raceData.laps || '?'} laps</span>
+                          <span title="Laps" className="text-gray-400">🏁 {raceData.laps || '?'} {typeof raceData.laps === 'number' ? 'laps' : ''}</span>
                           <span className="text-gray-600">|</span>
                           <span title="Pit Strategy" className="text-gray-400">🔧 {raceData.pitStrategy?.includes('not required') ? 'No pit' : raceData.pitStrategy?.includes('1') ? '1+ stop' : 'Pit'}</span>
                         </div>
