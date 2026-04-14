@@ -8,7 +8,7 @@ interface Race {
   races: RaceCondition[]; recap: string | null;
 }
 interface RaceCondition {
-  track: string; trackSlug: string; group: string; laps: number | null;
+  track: string; trackSlug: string; group: string; laps: number | string | null;
   bop: boolean; fuel: string | null; tireWear: string | null; weather: string | null;
   pitStrategy: string | null; tireAllowance: string | null; collisionPenalty: boolean;
   shortcutPenalty: boolean; ghosting: boolean; grid: string | null; start: string | null;
@@ -393,7 +393,7 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
             )}
           </div>
         </main>
-      ) : null}
+      )}
     </div>
   );
 }
