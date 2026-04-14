@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import races from '@/data/races.json';
-import tracks from '@/data/tracks.json';
-import drivers from '@/data/drivers.json';
-import standings from '@/data/standings.json';
+import { getRaces, getDrivers, getStandings, getTracks } from '@/lib/data-layer';
 import { trackSvgPaths, trackStartCoords, trackMapImages } from '@/data/trackPaths';
 
 interface Race {
@@ -27,13 +24,10 @@ interface TrackData {
   carSuitability: { car: string; rating: number; reason: string }[];
 }
 
-export async function generateStaticParams() {
-  return ['round-1','round-2','round-3','round-4','round-5','round-6','round-7','round-8'].map((id) => ({ id }));
-}
-
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const race = (races as Race[]).find((r) => r.id === id);
+  const allRaces = await getRaces() as Race[];
+  const race = allRaces.find((r) => r.id === id);
   if (!race) return { title: 'Race Not Found' };
   const rc = race.races[1] || race.races[0];
   return {
@@ -145,9 +139,17 @@ function TrackMap({ slug }: { slug: string }) {
   );
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function RaceDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const race = (races as Race[]).find((r) => r.id === id);
+  const [allRaces, allDrivers, allStandings, allTracks] = await Promise.all([
+    getRaces() as Promise<Race[]>,
+    getDrivers() as Promise<Driver[]>,
+    getStandings() as Promise<Standing[]>,
+    getTracks() as Promise<TrackData[]>,
+  ]);
+  const race = allRaces.find((r) => r.id === id);
 
   if (!race) {
     return (
@@ -159,12 +161,12 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
   }
 
   const isCompleted = race.status === 'completed';
-  const driverMap = new Map<string, Driver>((drivers as Driver[]).map((d) => [d.id, d]));
-  const standingsArray = standings as Standing[];
+  const driverMap = new Map<string, Driver>(allDrivers.map((d) => [d.id, d]));
+  const standingsArray = allStandings;
 
-  // Use Season 2 race data (index 1), fall back to Season 1 (index 0)
+  // Use last race in round (index 1 for double-headers), fall back to first
   const rc = race.races[1] || race.races[0] || null;
-  const track = rc ? (tracks as TrackData[]).find((t) => t.slug === rc.trackSlug) : null;
+  const track = rc ? allTracks.find((t) => t.slug === rc.trackSlug) : null;
 
   // Nav links
   const prevRound = race.round > 1 ? `round-${race.round - 1}` : null;
@@ -198,7 +200,7 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
         </div>
       </div>
 
-      {!isCompleted ? (
+      {!rc ? (
         <div className="px-4 py-8 md:px-6">
           <div className="max-w-lg mx-auto text-center border border-antigua-gold/20 rounded-lg p-8 bg-antigua-gold/5">
             <div className="text-4xl mb-3">🏁</div>
@@ -206,7 +208,7 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
             <p className="text-sm text-gray-400">Track, conditions and strategy will appear here once announced.</p>
           </div>
         </div>
-      ) : rc ? (
+      ) : (
         <main className="px-4 py-4 md:px-6">
           {/* Two-column: Track Map + Conditions */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
