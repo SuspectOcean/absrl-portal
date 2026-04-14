@@ -1,19 +1,27 @@
 import Link from 'next/link';
-import drivers from '@/data/drivers.json';
-import races from '@/data/races.json';
-import standings from '@/data/standings.json';
-import league from '@/data/league.json';
+import { getDrivers, getRaces, getStandings, getLeague } from '@/lib/data-layer';
 
 interface Driver { id: string; firstName: string; lastName: string; car: string; status: string; stats: { wins: number; podiums: number; bestFinish: number; points: number; dnfs: number } }
 interface Standing { driverId: string; rounds: (number | null)[]; total: number; }
+interface RaceSetting { track: string; trackSlug: string; group: string; laps: number | string | null; bop: boolean; fuel: string | null; tireWear: string | null; weather: string | null; pitStrategy: string | null; tireAllowance: string | null; collisionPenalty: boolean; shortcutPenalty: boolean; ghosting: boolean; grid: string | null; start: string | null; damage: string | null; qualifying: string | null; tuning: string | null; }
+interface Race { id: string; round: number; status: string; races: RaceSetting[]; recap: string | null; }
 
-export default function Home() {
-  const activeDrivers = (drivers as Driver[]).filter((d) => d.status === 'active');
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const [drivers, races, standings, league] = await Promise.all([
+    getDrivers() as Promise<Driver[]>,
+    getRaces() as Promise<Race[]>,
+    getStandings() as Promise<Standing[]>,
+    getLeague() as Promise<{ name: string; shortName: string; game: string; season: number; totalRounds: number; currentRound: number; description: string }>,
+  ]);
+
+  const activeDrivers = drivers.filter((d) => d.status === 'active');
   const completedRounds = races.filter((r) => r.status === 'completed');
   const nextRound = races.find((r) => r.status === 'upcoming');
   const lastRound = completedRounds[completedRounds.length - 1];
-  const standingsArray = (standings as Standing[]).sort((a, b) => b.total - a.total);
-  const driverMap = new Map<string, Driver>((drivers as Driver[]).map((d) => [d.id, d]));
+  const standingsArray = standings.sort((a, b) => b.total - a.total);
+  const driverMap = new Map<string, Driver>(drivers.map((d) => [d.id, d]));
 
   const uniqueTracks = new Set(
     completedRounds.flatMap((r) => r.races).map((race) => race.track)
@@ -26,6 +34,9 @@ export default function Home() {
   // Season stats
   const leader = driverMap.get(standingsArray[0]?.driverId);
   const totalRaces = completedRounds.reduce((sum, r) => sum + r.races.length, 0);
+
+  // Next race details
+  const nextRaceData = nextRound?.races?.[0] || null;
 
   return (
     <main className="bg-racing-black text-white flex flex-col">
@@ -191,7 +202,26 @@ export default function Home() {
               <h3 className="text-xl font-black tracking-tight">
                 Round {nextRound?.round || '?'}
               </h3>
-              <p className="text-xs text-gray-400">TBA</p>
+              {nextRaceData ? (
+                <div className="mt-1">
+                  <Link href={`/races/${nextRound?.id}`} className="hover:text-antigua-gold transition-colors">
+                    <p className="text-sm font-bold text-antigua-gold">{nextRaceData.track}</p>
+                  </Link>
+                  <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1 text-xs text-gray-400">
+                    {nextRaceData.group && <span>{nextRaceData.group}</span>}
+                    {nextRaceData.laps && <span>{nextRaceData.laps} {typeof nextRaceData.laps === 'number' ? 'laps' : ''}</span>}
+                    {nextRaceData.weather && <span>{nextRaceData.weather}</span>}
+                  </div>
+                  <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1 text-xs text-gray-500">
+                    {nextRaceData.grid && <span>{nextRaceData.grid}</span>}
+                    {nextRaceData.start && <span>{nextRaceData.start}</span>}
+                    {nextRaceData.fuel && <span>Fuel {nextRaceData.fuel}</span>}
+                    {nextRaceData.tireWear && <span>Tire {nextRaceData.tireWear}</span>}
+                  </div>
+                </div>
+              ) : (
+                <p className="text-xs text-gray-400">TBA</p>
+              )}
             </div>
 
             {/* Round-by-round mini tracker */}
@@ -207,6 +237,8 @@ export default function Home() {
                     className={`flex-1 h-6 rounded text-center text-xs font-bold leading-6 transition-colors ${
                       r.status === 'completed'
                         ? 'bg-antigua-gold/20 text-antigua-gold hover:bg-antigua-gold/30'
+                        : r.status === 'upcoming' && r.id === nextRound?.id
+                        ? 'bg-antigua-red/20 text-antigua-red hover:bg-antigua-red/30 ring-1 ring-antigua-red/50'
                         : 'bg-gray-800 text-gray-500 hover:bg-gray-700'
                     }`}
                   >
