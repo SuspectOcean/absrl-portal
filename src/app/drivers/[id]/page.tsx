@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import drivers from '@/data/drivers.json';
-import cars from '@/data/cars.json';
-import standings from '@/data/standings.json';
+import { getDrivers, getStandings, getCars } from '@/lib/data-layer';
 
 interface Driver {
   id: string;
@@ -39,15 +37,12 @@ interface Standing {
   total: number;
 }
 
-export async function generateStaticParams() {
-  return (drivers as Driver[]).map((driver) => ({
-    id: driver.id,
-  }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const driver = (drivers as Driver[]).find((d) => d.id === id);
+  const allDrivers = await getDrivers() as Driver[];
+  const driver = allDrivers.find((d) => d.id === id);
   if (!driver) return { title: 'Driver Not Found' };
   return {
     title: `${driver.firstName} ${driver.lastName} | ABSRL GT7`,
@@ -57,7 +52,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function DriverPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const driver = (drivers as Driver[]).find((d) => d.id === id) as Driver | undefined;
+  const [allDrivers, allStandings, allCars] = await Promise.all([
+    getDrivers() as Promise<Driver[]>,
+    getStandings() as Promise<Standing[]>,
+    getCars() as Promise<Car[]>,
+  ]);
+  const driver = allDrivers.find((d) => d.id === id);
   if (!driver) {
     return (
       <div className="min-h-screen bg-racing-black text-white p-4">
@@ -69,8 +69,8 @@ export default async function DriverPage({ params }: { params: Promise<{ id: str
     );
   }
 
-  const carData = (cars as Car[]).find((c) => c.slug === driver.carSlug);
-  const standing = (standings as Standing[]).find((s) => s.driverId === driver.id);
+  const carData = allCars.find((c) => c.slug === driver.carSlug);
+  const standing = allStandings.find((s) => s.driverId === driver.id);
   const roundPoints = standing?.rounds || [];
 
   return (
