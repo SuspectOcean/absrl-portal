@@ -53,14 +53,14 @@ export default async function StandingsPage() {
               if (!driver) return null;
 
               const pos = idx + 1;
-              const borderClass = pos === 1 ? 'border-l-2 border-antigua-gold'
-                : pos === 2 ? 'border-l-2 border-yellow-400'
-                : pos === 3 ? 'border-l-2 border-orange-600'
+              const borderClass = pos === 1 ? 'border-l-2 border-l-antigua-gold'
+                : pos === 2 ? 'border-l-2 border-l-yellow-400'
+                : pos === 3 ? 'border-l-2 border-l-orange-600'
                 : '';
               const bgClass = pos === 1 ? 'bg-antigua-gold/10' : '';
 
               return (
-                <tr key={driver.id} className={`border-b border-racing-gray/50 ${bgClass} ${borderClass}`}>
+                <tr key={driver.id} className={`border-b border-b-racing-gray/50 ${bgClass} ${borderClass}`}>
                   <td className="px-1 py-0.5 font-bold text-antigua-gold">{pos}</td>
                   <td className="px-1 py-0.5 truncate">
                     <Link href={`/drivers/${driver.id}`} className="hover:text-antigua-gold">
