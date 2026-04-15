@@ -18,7 +18,7 @@ interface Track {
   slug: string; name: string; location: string; country: string;
   length: string; turns: number; description: string;
   characteristics: string[];
-  analysis: { brakingDemand: string; topSpeed: string; downforce: string; tyreWear: string; overtakingDifficulty: string };
+  analysis: { topSpeed: number; braking: number; cornering: number; elevation: number; overtaking: number };
 }
 
 export const dynamic = 'force-dynamic';
@@ -99,21 +99,23 @@ export default async function StrategyPage() {
                         ))}
                       </div>
 
-                      {/* Analysis Grid */}
+                      {/* Analysis Bars */}
                       {trackData.analysis && (
-                        <div className="grid grid-cols-3 gap-1.5 text-xs">
-                          <div className="bg-black/30 rounded p-1.5 text-center">
-                            <div className="text-gray-500">Braking</div>
-                            <div className="text-white font-bold">{trackData.analysis.brakingDemand}</div>
-                          </div>
-                          <div className="bg-black/30 rounded p-1.5 text-center">
-                            <div className="text-gray-500">Top Speed</div>
-                            <div className="text-white font-bold">{trackData.analysis.topSpeed}</div>
-                          </div>
-                          <div className="bg-black/30 rounded p-1.5 text-center">
-                            <div className="text-gray-500">Tyre Wear</div>
-                            <div className="text-white font-bold">{trackData.analysis.tyreWear}</div>
-                          </div>
+                        <div className="space-y-1 text-xs">
+                          {[
+                            { label: 'Top Speed', val: trackData.analysis.topSpeed },
+                            { label: 'Braking', val: trackData.analysis.braking },
+                            { label: 'Cornering', val: trackData.analysis.cornering },
+                            { label: 'Overtaking', val: trackData.analysis.overtaking },
+                          ].map((item) => (
+                            <div key={item.label} className="flex items-center gap-2">
+                              <span className="text-gray-500 w-16 text-right">{item.label}</span>
+                              <div className="flex-1 h-1.5 bg-black/30 rounded-full overflow-hidden">
+                                <div className="h-full bg-antigua-gold rounded-full" style={{ width: `${(item.val / 5) * 100}%` }} />
+                              </div>
+                              <span className="text-gray-500 w-4">{item.val}/5</span>
+                            </div>
+                          ))}
                         </div>
                       )}
                     </div>
