@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { getRaces, getDrivers, getStandings, getTracks } from '@/lib/data-layer';
 import { trackSvgPaths, trackStartCoords, trackMapImages } from '@/data/trackPaths';
+import StrategyDownload from '@/components/StrategyDownload';
 
 interface Race {
   id: string; round: number; status: 'completed' | 'upcoming';
@@ -348,6 +349,11 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
                 );
               })()}
             </div>
+          </div>
+
+          {/* Strategy Download */}
+          <div className="mb-4">
+            <StrategyDownload roundId={race.id} drivers={allDrivers as { id: string; firstName: string; lastName: string }[]} />
           </div>
 
           {/* Results + Recap */}
