@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getRaces, getDrivers } from '@/lib/data-layer';
+import { getRaces, getDrivers, getTracks } from '@/lib/data-layer';
 import { trackMapImages } from '@/data/trackPaths';
 import StrategyPicker from '@/components/StrategyPicker';
 
@@ -14,79 +14,125 @@ interface Race {
   recap: string | null;
 }
 interface Driver { id: string; firstName: string; lastName: string; car: string; }
+interface Track {
+  slug: string; name: string; location: string; country: string;
+  length: string; turns: number; description: string;
+  characteristics: string[];
+  analysis: { brakingDemand: string; topSpeed: string; downforce: string; tyreWear: string; overtakingDifficulty: string };
+}
 
 export const dynamic = 'force-dynamic';
 
 export default async function StrategyPage() {
-  const [allRaces, allDrivers] = await Promise.all([
+  const [allRaces, allDrivers, allTracks] = await Promise.all([
     getRaces() as Promise<Race[]>,
     getDrivers() as Promise<Driver[]>,
+    getTracks() as Promise<Track[]>,
   ]);
 
   const upcomingRace = allRaces.find((r) => r.status === 'upcoming');
   const rc = upcomingRace?.races?.[0] || null;
   const trackImage = rc ? trackMapImages[rc.trackSlug] : null;
+  const trackData = rc ? allTracks.find((t) => t.slug === rc.trackSlug) : null;
 
   return (
-    <div className="bg-racing-black text-white min-h-screen">
-      <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="bg-racing-black text-white h-[calc(100vh-3rem)] overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 py-4 h-full flex flex-col">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold mb-2">
+        <div className="flex items-center justify-between mb-3">
+          <h1 className="text-lg font-bold">
             <span className="text-antigua-gold">Race Engineer</span> Strategy Brief
           </h1>
-          <p className="text-sm text-gray-400">Personalized strategy PDFs for the upcoming race</p>
+          {upcomingRace && (
+            <span className="text-xs px-2 py-1 rounded bg-antigua-gold/10 text-antigua-gold font-bold animate-pulse">UPCOMING</span>
+          )}
         </div>
 
         {upcomingRace && rc ? (
-          <>
-            {/* Upcoming Race Card */}
-            <div className="border border-antigua-gold/30 rounded-lg bg-racing-dark overflow-hidden mb-6">
-              <div className="bg-gradient-to-r from-antigua-gold/10 to-transparent px-4 py-3 border-b border-antigua-gold/20 flex items-center justify-between">
-                <div>
-                  <span className="text-xs text-gray-500 font-bold uppercase tracking-wider">Upcoming Race</span>
-                  <h2 className="text-lg font-bold">
-                    <span className="text-antigua-gold">Round {upcomingRace.round}</span>
-                    <span className="text-gray-400 mx-2">—</span>
-                    <span>{rc.track}</span>
-                  </h2>
-                </div>
-                <span className="text-xs px-2 py-1 rounded bg-antigua-gold/10 text-antigua-gold font-bold animate-pulse">UPCOMING</span>
-              </div>
-
-              {/* Track Map */}
-              {trackImage && (
-                <div className="p-4">
-                  <div className="bg-white rounded-lg overflow-hidden">
-                    <img src={trackImage} alt={`${rc.track} track map`} className="w-full h-auto" />
-                  </div>
-                </div>
-              )}
-
-              {/* Quick Info */}
-              <div className="px-4 pb-4 grid grid-cols-3 gap-3 text-center">
-                <div className="bg-black/30 rounded p-2">
-                  <div className="text-sm font-bold text-antigua-gold">{rc.group}</div>
-                  <div className="text-xs text-gray-500">Class</div>
-                </div>
-                <div className="bg-black/30 rounded p-2">
-                  <div className="text-sm font-bold text-antigua-gold">{rc.laps || '?'}</div>
-                  <div className="text-xs text-gray-500">Laps</div>
-                </div>
-                <div className="bg-black/30 rounded p-2">
-                  <div className="text-sm font-bold text-antigua-gold">{rc.weather || 'TBA'}</div>
-                  <div className="text-xs text-gray-500">Weather</div>
-                </div>
+          <div className="flex-1 flex flex-col gap-3 min-h-0">
+            {/* Round Title Bar */}
+            <div className="bg-gradient-to-r from-antigua-gold/10 to-transparent px-4 py-2 rounded border border-antigua-gold/20 flex items-center justify-between">
+              <h2 className="text-base font-bold">
+                <span className="text-antigua-gold">Round {upcomingRace.round}</span>
+                <span className="text-gray-500 mx-2">—</span>
+                <span>{rc.track}</span>
+              </h2>
+              <div className="flex gap-3 text-xs">
+                <span><span className="text-gray-500">Class</span> <span className="text-antigua-gold font-bold">{rc.group}</span></span>
+                <span><span className="text-gray-500">Laps</span> <span className="text-antigua-gold font-bold">{rc.laps || '?'}</span></span>
+                <span><span className="text-gray-500">Weather</span> <span className="text-antigua-gold font-bold">{rc.weather || 'TBA'}</span></span>
               </div>
             </div>
 
-            {/* Driver Picker */}
-            <StrategyPicker
-              drivers={allDrivers.map((d) => ({ id: d.id, firstName: d.firstName, lastName: d.lastName, car: d.car }))}
-              trackName={rc.track}
-              round={upcomingRace.round}
-            />
-          </>
+            {/* Main Content: Track Map + Info | Driver Picker */}
+            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-3 min-h-0">
+              {/* Left: Track Map + Description */}
+              <div className="border border-gray-800 rounded-lg bg-racing-dark overflow-hidden flex flex-col">
+                {/* Track Map — compact */}
+                {trackImage && (
+                  <div className="p-3 flex-shrink-0">
+                    <div className="bg-white rounded overflow-hidden">
+                      <img src={trackImage} alt={`${rc.track} track map`} className="w-full h-auto max-h-44 object-contain" />
+                    </div>
+                  </div>
+                )}
+
+                {/* Track Description */}
+                <div className="px-3 pb-3 flex-1 overflow-y-auto">
+                  {trackData ? (
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-xs text-gray-500">
+                        <span>{trackData.length}</span>
+                        <span>•</span>
+                        <span>{trackData.turns} turns</span>
+                        <span>•</span>
+                        <span>{trackData.location}</span>
+                      </div>
+                      <p className="text-xs text-gray-300 leading-relaxed">{trackData.description}</p>
+
+                      {/* Key Traits */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {trackData.characteristics.slice(0, 4).map((c, i) => (
+                          <span key={i} className="text-xs px-2 py-0.5 rounded-full bg-antigua-gold/10 text-antigua-gold border border-antigua-gold/20">
+                            {c}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Analysis Grid */}
+                      {trackData.analysis && (
+                        <div className="grid grid-cols-3 gap-1.5 text-xs">
+                          <div className="bg-black/30 rounded p-1.5 text-center">
+                            <div className="text-gray-500">Braking</div>
+                            <div className="text-white font-bold">{trackData.analysis.brakingDemand}</div>
+                          </div>
+                          <div className="bg-black/30 rounded p-1.5 text-center">
+                            <div className="text-gray-500">Top Speed</div>
+                            <div className="text-white font-bold">{trackData.analysis.topSpeed}</div>
+                          </div>
+                          <div className="bg-black/30 rounded p-1.5 text-center">
+                            <div className="text-gray-500">Tyre Wear</div>
+                            <div className="text-white font-bold">{trackData.analysis.tyreWear}</div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-gray-500">Track details unavailable.</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Right: Driver Picker */}
+              <div className="flex flex-col">
+                <StrategyPicker
+                  drivers={allDrivers.map((d) => ({ id: d.id, firstName: d.firstName, lastName: d.lastName, car: d.car }))}
+                  trackName={rc.track}
+                  round={upcomingRace.round}
+                />
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="text-center border border-antigua-gold/20 rounded-lg p-8 bg-antigua-gold/5">
             <div className="text-4xl mb-3">🏁</div>
