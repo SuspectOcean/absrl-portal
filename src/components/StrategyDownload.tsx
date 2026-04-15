@@ -28,7 +28,7 @@ export default function StrategyDownload({ drivers, trackName }: { drivers: Driv
       </div>
       <div className="p-4">
         <p className="text-xs text-gray-400 mb-3">Personalized strategy PDFs — select your name to download your race brief.</p>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <select
             value={selectedDriver}
             onChange={(e) => setSelectedDriver(e.target.value)}
