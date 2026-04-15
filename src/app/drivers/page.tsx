@@ -1,12 +1,22 @@
 import Link from 'next/link';
-import drivers from '@/data/drivers.json';
+import { getDrivers } from '@/lib/data-layer';
+
+interface Driver {
+  id: string; firstName: string; lastName: string; initials: string;
+  car: string; status: string;
+  stats: { points: number; wins: number; podiums: number; bestFinish: number; dnfs: number };
+}
 
 export const metadata = {
   title: 'Drivers | ABSRL GT7 Esports League',
-  description: 'Season 1 driver roster for the ABSRL GT7 esports racing league.',
+  description: 'Driver roster for the ABSRL GT7 esports racing league.',
 };
 
-export default function DriversPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function DriversPage() {
+  const drivers = await getDrivers() as Driver[];
+
   const activeDrivers = drivers
     .filter((d) => d.status === 'active')
     .sort((a, b) => b.stats.points - a.stats.points);
@@ -22,7 +32,7 @@ export default function DriversPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <h1 className="text-sm font-bold text-antigua-gold">Drivers</h1>
-        <span className="text-xs text-gray-400">Season 1</span>
+        <span className="text-xs text-gray-400">Season 2</span>
       </div>
 
       {/* Grid */}
