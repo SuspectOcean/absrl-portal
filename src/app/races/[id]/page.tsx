@@ -351,10 +351,12 @@ export default async function RaceDetailPage({ params }: { params: Promise<{ id:
             </div>
           </div>
 
-          {/* Strategy Download */}
-          <div className="mb-4">
-            <StrategyDownload roundId={race.id} drivers={allDrivers as { id: string; firstName: string; lastName: string }[]} />
-          </div>
+          {/* Strategy Download — upcoming races only */}
+          {!isCompleted && rc && (
+            <div className="mb-4">
+              <StrategyDownload drivers={allDrivers as { id: string; firstName: string; lastName: string }[]} trackName={rc.track} />
+            </div>
+          )}
 
           {/* Results + Recap */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
