@@ -47,8 +47,8 @@ export default function StrategyDownload({ roundId, drivers }: { roundId: string
   };
 
   return (
-    <div className="border border-gray-800 rounded-lg bg-racing-dark overflow-hidden">
-      <div className="bg-gradient-to-r from-antigua-gold/10 to-transparent px-4 py-2 border-b border-gray-800">
+    <div className="border border-antigua-gold/30 rounded-lg bg-racing-dark overflow-hidden">
+      <div className="bg-gradient-to-r from-antigua-gold/10 to-transparent px-4 py-2 border-b border-antigua-gold/20">
         <span className="text-xs font-bold text-antigua-gold">📋 RACE ENGINEER STRATEGY BRIEF</span>
       </div>
       <div className="p-4">
