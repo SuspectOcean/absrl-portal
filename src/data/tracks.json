@@ -618,23 +618,44 @@
       "Demanding on front tyres"
     ],
     "analysis": {
-      "brakingDemand": "High",
-      "topSpeed": "High",
-      "downforce": "Medium-High",
-      "tyreWear": "High",
-      "overtakingDifficulty": "Medium"
+      "topSpeed": 4,
+      "braking": 4,
+      "cornering": 4,
+      "elevation": 1,
+      "overtaking": 3
     },
-    "carSuitability": {
-      "bestSuited": [
-        "Balanced chassis",
-        "Good top speed",
-        "Strong under braking"
-      ],
-      "challenges": [
-        "High tyre wear mid-corner",
-        "Rear instability in Sector 3"
-      ]
-    },
+    "carSuitability": [
+      {
+        "car": "Mazda RX-Vision GT3 Concept",
+        "rating": 4,
+        "reason": "Lightweight and nimble through the technical final sector. Good traction out of slow corners compensates for lower top speed."
+      },
+      {
+        "car": "Dodge Viper GTS-R GT3",
+        "rating": 4,
+        "reason": "Massive V10 power dominates the long main straight. Heavy braking zones suit the Viper's strong brakes."
+      },
+      {
+        "car": "Audi R8 LMS Evo '19",
+        "rating": 5,
+        "reason": "AWD traction and balanced chassis excel across Barcelona's varied corner types. Strong all-round performer."
+      },
+      {
+        "car": "BMW M4 GT Endurance Model",
+        "rating": 3,
+        "reason": "Good straightline speed but front-heavy weight distribution hurts in high-speed sweepers."
+      },
+      {
+        "car": "Ferrari 296 GT3",
+        "rating": 4,
+        "reason": "Hybrid power and mid-engine balance suit the mix of fast and slow corners."
+      },
+      {
+        "car": "Nissan GT-R NISMO GT3",
+        "rating": 4,
+        "reason": "AWD traction advantage out of slow corners and strong braking stability."
+      }
+    ],
     "imageUrl": ""
   }
 ]
