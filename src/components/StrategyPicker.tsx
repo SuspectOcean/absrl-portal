@@ -16,7 +16,7 @@ export default function StrategyPicker({ drivers, trackName, round }: { drivers:
 
   const handleDownload = () => {
     if (!selected) return;
-    const name = `Strategy_${selected.firstName}_${selected.lastName}`.replace(/['\s]/g, '_');
+    const name = `Strategy_${selected.firstName}_${selected.lastName}`.replace(/'/g, '').replace(/\s/g, '_');
     window.open(`/strategies/${name}.pdf`, '_blank');
   };
 
