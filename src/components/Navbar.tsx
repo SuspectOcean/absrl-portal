@@ -30,25 +30,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1.5 group">
             <span className="text-lg font-bold text-white tracking-wider">ABSRL</span>
-            <svg viewBox="0 0 30 20" className="w-6 h-4 group-hover:scale-110 transition-transform">
-              {/* Antigua & Barbuda Flag */}
-              {/* Red background */}
-              <rect width="30" height="20" fill="#CE1126" />
-              {/* Black triangle top */}
-              <polygon points="0,0 30,0 15,10" fill="#000000" />
-              {/* Blue-white-blue at bottom */}
-              <polygon points="0,20 30,20 15,10" fill="#0072C6" />
-              <polygon points="3,20 27,20 15,12" fill="#FFFFFF" />
-              <polygon points="6,20 24,20 15,14" fill="#0072C6" />
-              {/* Golden half-sun rising */}
-              <circle cx="15" cy="6" r="2.5" fill="#FCD116" />
-              {/* Sun rays */}
-              <line x1="15" y1="2" x2="15" y2="0.5" stroke="#FCD116" strokeWidth="0.6" />
-              <line x1="12" y1="3" x2="11" y2="1.5" stroke="#FCD116" strokeWidth="0.6" />
-              <line x1="18" y1="3" x2="19" y2="1.5" stroke="#FCD116" strokeWidth="0.6" />
-              <line x1="10.5" y1="5.5" x2="9" y2="5" stroke="#FCD116" strokeWidth="0.6" />
-              <line x1="19.5" y1="5.5" x2="21" y2="5" stroke="#FCD116" strokeWidth="0.6" />
-            </svg>
+            <img src="/ab-flag.png" alt="Antigua & Barbuda Flag" className="w-7 h-5 object-cover rounded-sm group-hover:scale-110 transition-transform" />
           </Link>
 
           {/* Desktop Navigation */}
