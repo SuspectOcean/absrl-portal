@@ -78,6 +78,10 @@ export async function getRaces() {
   if (isSheetsConfigured()) {
     const sheetRaces = await sheets.getRaces();
     const settings = await sheets.getRaceSettings();
+    const results = await sheets.getRaceResults();
+
+    // Build a set of round IDs that have results → auto-detect "completed"
+    const roundsWithResults = new Set(results.map((r) => r.roundId));
 
     return sheetRaces.map((race) => {
       const raceSettings = settings
@@ -104,10 +108,14 @@ export async function getRaces() {
           tuning: s.tuning || null,
         }));
 
+      // Auto-derive status: results exist → completed, otherwise use sheet status
+      const hasResults = roundsWithResults.has(race.id);
+      const autoStatus = hasResults ? "completed" : race.status;
+
       return {
         id: race.id,
         round: race.round,
-        status: race.status,
+        status: autoStatus,
         races: raceSettings,
         recap: race.recap || null,
       };
