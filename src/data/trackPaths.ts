@@ -204,7 +204,7 @@ export const trackMapImages: Record<string, string> = {
   'red-bull-ring': 'https://gt-engine.com/gt7/tracks/images/md/red-bull-ring.png',
   'interlagos': 'https://gt-engine.com/gt7/tracks/images/md/interlagos.png',
   'deep-forest-raceway': 'https://gt-engine.com/gt7/tracks/images/md/deep-forest.png',
-  'barcelona-catalunya': 'https://gt-engine.com/gt7/tracks/images/md/barcelona-catalunya.png',
+  'barcelona-catalunya': 'https://gt-engine.com/gt7/tracks/images/md/barcelona-catalunya-gp.png',
 };
 
 // Start/Finish line coordinates for each track (for the red dot marker)
