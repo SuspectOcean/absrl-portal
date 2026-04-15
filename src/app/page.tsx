@@ -33,7 +33,7 @@ export default async function Home() {
 
   // Season stats
   const leader = driverMap.get(standingsArray[0]?.driverId);
-  const totalRaces = completedRounds.reduce((sum, r) => sum + r.races.length, 0);
+  const totalRaces = roundsCompleted;
 
   // Next race details
   const nextRaceData = nextRound?.races?.[0] || null;
