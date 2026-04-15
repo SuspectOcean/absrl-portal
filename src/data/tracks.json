@@ -13,12 +13,34 @@
     "direction": "Clockwise",
     "description": "A legendary GT circuit carved through the Sierra Nevada mountains. Trial Mountain's dramatic elevation changes, three tunnels, and blind crests create one of sim racing's most exhilarating challenges. The long uphill back straight rewards power, while the technical mountain section demands precision and bravery.",
     "keyCorners": [
-      {"name": "Tunnel Entry (T3)", "type": "Heavy Braking", "description": "Sharp right-hander into the first tunnel. Late braking rewards brave drivers but overshoot and the wall waits."},
-      {"name": "Mountain Hairpin (T7)", "type": "Hairpin", "description": "Tight left-hand hairpin at the circuit's highest point. Traction on exit is critical for the descent."},
-      {"name": "Ridge Chicane (T10-11)", "type": "High Speed", "description": "Fast left-right flick along the mountain ridge. Carries massive speed if committed, punishes hesitation."},
-      {"name": "Valley Sweep (T14)", "type": "High Speed", "description": "High-speed right-hander leading onto the main straight. Exit speed defines lap time."}
+      {
+        "name": "Tunnel Entry (T3)",
+        "type": "Heavy Braking",
+        "description": "Sharp right-hander into the first tunnel. Late braking rewards brave drivers but overshoot and the wall waits."
+      },
+      {
+        "name": "Mountain Hairpin (T7)",
+        "type": "Hairpin",
+        "description": "Tight left-hand hairpin at the circuit's highest point. Traction on exit is critical for the descent."
+      },
+      {
+        "name": "Ridge Chicane (T10-11)",
+        "type": "High Speed",
+        "description": "Fast left-right flick along the mountain ridge. Carries massive speed if committed, punishes hesitation."
+      },
+      {
+        "name": "Valley Sweep (T14)",
+        "type": "High Speed",
+        "description": "High-speed right-hander leading onto the main straight. Exit speed defines lap time."
+      }
     ],
-    "characteristics": ["3 tunnel passages", "58m elevation change", "1.3km uphill straight", "Blind crests", "Technical mountain section"],
+    "characteristics": [
+      "3 tunnel passages",
+      "58m elevation change",
+      "1.3km uphill straight",
+      "Blind crests",
+      "Technical mountain section"
+    ],
     "analysis": {
       "topSpeed": 4,
       "braking": 3,
@@ -27,12 +49,36 @@
       "overtaking": 3
     },
     "carSuitability": [
-      {"car": "Mazda RX-Vision GT3 Concept", "rating": 5, "reason": "Lightweight chassis excels through technical mountain section. D'ornellas proved this dominance in Round 1."},
-      {"car": "Audi R8 LMS Evo '19", "rating": 4, "reason": "Balanced AWD chassis handles elevation changes with composure. Strong traction on uphill exits."},
-      {"car": "Porsche 911 RSR (2017)", "rating": 4, "reason": "Mid-engine grip advantage in technical sections. Good power for the long straight."},
-      {"car": "Dodge Viper GTS-R GT3", "rating": 3, "reason": "Raw power exploits the 1.3km straight, but heavy chassis struggles through mountain hairpins."},
-      {"car": "Toyota GR Supra Racing Concept", "rating": 4, "reason": "Nimble and lightweight. Rewards smooth inputs through flowing corners."},
-      {"car": "BMW M4 GT Endurance Model", "rating": 3, "reason": "Power suits the straight but weight hurts in the tight mountain section."}
+      {
+        "car": "Mazda RX-Vision GT3 Concept",
+        "rating": 5,
+        "reason": "Lightweight chassis excels through technical mountain section. D'ornellas proved this dominance in Round 1."
+      },
+      {
+        "car": "Audi R8 LMS Evo '19",
+        "rating": 4,
+        "reason": "Balanced AWD chassis handles elevation changes with composure. Strong traction on uphill exits."
+      },
+      {
+        "car": "Porsche 911 RSR (2017)",
+        "rating": 4,
+        "reason": "Mid-engine grip advantage in technical sections. Good power for the long straight."
+      },
+      {
+        "car": "Dodge Viper GTS-R GT3",
+        "rating": 3,
+        "reason": "Raw power exploits the 1.3km straight, but heavy chassis struggles through mountain hairpins."
+      },
+      {
+        "car": "Toyota GR Supra Racing Concept",
+        "rating": 4,
+        "reason": "Nimble and lightweight. Rewards smooth inputs through flowing corners."
+      },
+      {
+        "car": "BMW M4 GT Endurance Model",
+        "rating": 3,
+        "reason": "Power suits the straight but weight hurts in the tight mountain section."
+      }
     ],
     "imageUrl": null
   },
@@ -48,13 +94,31 @@
     "longestStraight": "450m",
     "surface": "Asphalt",
     "direction": "Counter-clockwise",
-    "description": "The first real-world circuit ever featured in Gran Turismo. Laguna Seca's dramatic elevation changes, blind crests, and the iconic Corkscrew make it one of motorsport's most demanding tracks. Short but intense — every corner matters here.",
+    "description": "The first real-world circuit ever featured in Gran Turismo. Laguna Seca's dramatic elevation changes, blind crests, and the iconic Corkscrew make it one of motorsport's most demanding tracks. Short but intense \u2014 every corner matters here.",
     "keyCorners": [
-      {"name": "Andretti Hairpin (T2)", "type": "Hairpin", "description": "Named after Mario Andretti. A 180-degree left-hander where late braking can gain positions but risks track limits."},
-      {"name": "The Corkscrew (T8-8A)", "type": "Blind Descent", "description": "The most famous corner in motorsport. A blind, plunging left-right with an 18% elevation drop. Commit fully or lose everything."},
-      {"name": "Rainey Curve (T9)", "type": "High Speed", "description": "Fast left-hander at the bottom of the Corkscrew descent. Carries huge speed and rewards total commitment."}
+      {
+        "name": "Andretti Hairpin (T2)",
+        "type": "Hairpin",
+        "description": "Named after Mario Andretti. A 180-degree left-hander where late braking can gain positions but risks track limits."
+      },
+      {
+        "name": "The Corkscrew (T8-8A)",
+        "type": "Blind Descent",
+        "description": "The most famous corner in motorsport. A blind, plunging left-right with an 18% elevation drop. Commit fully or lose everything."
+      },
+      {
+        "name": "Rainey Curve (T9)",
+        "type": "High Speed",
+        "description": "Fast left-hander at the bottom of the Corkscrew descent. Carries huge speed and rewards total commitment."
+      }
     ],
-    "characteristics": ["The Corkscrew — 18% drop", "55m elevation in 3.6km", "Blind crests", "Narrow racing line", "Short but demanding"],
+    "characteristics": [
+      "The Corkscrew \u2014 18% drop",
+      "55m elevation in 3.6km",
+      "Blind crests",
+      "Narrow racing line",
+      "Short but demanding"
+    ],
     "analysis": {
       "topSpeed": 2,
       "braking": 4,
@@ -63,12 +127,36 @@
       "overtaking": 2
     },
     "carSuitability": [
-      {"car": "Mazda RX-Vision GT3 Concept", "rating": 5, "reason": "Lightest car on the grid. Perfect for Laguna's technical demands and elevation changes."},
-      {"car": "Ferrari 458 Italia GT3", "rating": 4, "reason": "Naturally aspirated V8 response suits the constant direction changes."},
-      {"car": "Toyota GR Supra Racing Concept", "rating": 4, "reason": "Lightweight agility pays dividends on this tight, technical layout."},
-      {"car": "Lamborghini Huracán GT3", "rating": 3, "reason": "AWD traction helps through the Corkscrew but extra weight limits corner speed."},
-      {"car": "Dodge Viper GTS-R GT3", "rating": 2, "reason": "Heaviest car struggles on a track with no long straights to exploit power."},
-      {"car": "Nissan GT-R NISMO GT3", "rating": 3, "reason": "AWD confidence through blind crests helps, but mass is a disadvantage."}
+      {
+        "car": "Mazda RX-Vision GT3 Concept",
+        "rating": 5,
+        "reason": "Lightest car on the grid. Perfect for Laguna's technical demands and elevation changes."
+      },
+      {
+        "car": "Ferrari 458 Italia GT3",
+        "rating": 4,
+        "reason": "Naturally aspirated V8 response suits the constant direction changes."
+      },
+      {
+        "car": "Toyota GR Supra Racing Concept",
+        "rating": 4,
+        "reason": "Lightweight agility pays dividends on this tight, technical layout."
+      },
+      {
+        "car": "Lamborghini Hurac\u00e1n GT3",
+        "rating": 3,
+        "reason": "AWD traction helps through the Corkscrew but extra weight limits corner speed."
+      },
+      {
+        "car": "Dodge Viper GTS-R GT3",
+        "rating": 2,
+        "reason": "Heaviest car struggles on a track with no long straights to exploit power."
+      },
+      {
+        "car": "Nissan GT-R NISMO GT3",
+        "rating": 3,
+        "reason": "AWD confidence through blind crests helps, but mass is a disadvantage."
+      }
     ],
     "imageUrl": null
   },
@@ -86,12 +174,34 @@
     "direction": "Clockwise",
     "description": "The greatest racing circuit in the world. Spa-Francorchamps combines fearsome speed with technical complexity across 7 kilometers of Belgian Ardennes forest. Legendary corners, dramatic elevation, and notoriously unpredictable weather make every lap an adventure.",
     "keyCorners": [
-      {"name": "La Source (T1)", "type": "Hairpin", "description": "Tight first-gear hairpin at the top of the hill. Exit speed sets up the charge down to Eau Rouge."},
-      {"name": "Eau Rouge / Raidillon (T3-4)", "type": "Flat Out", "description": "The most iconic corner complex in motorsport. A compression into a blind, uphill left-right taken flat in GT3 cars. Pure commitment."},
-      {"name": "Pouhon (T11)", "type": "High Speed", "description": "Double-apex, high-speed left-hander through a dip. Demands trust in downforce and absolute courage."},
-      {"name": "Bus Stop (T18-19)", "type": "Heavy Braking", "description": "Tight chicane before the pit straight. Heavy braking zone and prime overtaking spot."}
+      {
+        "name": "La Source (T1)",
+        "type": "Hairpin",
+        "description": "Tight first-gear hairpin at the top of the hill. Exit speed sets up the charge down to Eau Rouge."
+      },
+      {
+        "name": "Eau Rouge / Raidillon (T3-4)",
+        "type": "Flat Out",
+        "description": "The most iconic corner complex in motorsport. A compression into a blind, uphill left-right taken flat in GT3 cars. Pure commitment."
+      },
+      {
+        "name": "Pouhon (T11)",
+        "type": "High Speed",
+        "description": "Double-apex, high-speed left-hander through a dip. Demands trust in downforce and absolute courage."
+      },
+      {
+        "name": "Bus Stop (T18-19)",
+        "type": "Heavy Braking",
+        "description": "Tight chicane before the pit straight. Heavy braking zone and prime overtaking spot."
+      }
     ],
-    "characteristics": ["7km of pure challenge", "102m elevation change", "Eau Rouge — flat out courage", "Unpredictable weather", "890m Kemmel Straight"],
+    "characteristics": [
+      "7km of pure challenge",
+      "102m elevation change",
+      "Eau Rouge \u2014 flat out courage",
+      "Unpredictable weather",
+      "890m Kemmel Straight"
+    ],
     "analysis": {
       "topSpeed": 5,
       "braking": 4,
@@ -100,12 +210,36 @@
       "overtaking": 4
     },
     "carSuitability": [
-      {"car": "BMW M4 GT Endurance Model", "rating": 5, "reason": "625 HP and stability through Eau Rouge. Power advantage on Kemmel Straight is massive."},
-      {"car": "Dodge Viper GTS-R GT3", "rating": 5, "reason": "645 HP V10 dominates the long straights. If the driver can manage the weight through Bus Stop."},
-      {"car": "Audi R8 LMS Evo '19", "rating": 4, "reason": "Balanced chassis handles everything Spa throws at it. AWD helps in wet conditions."},
-      {"car": "Mazda RX-Vision GT3 Concept", "rating": 3, "reason": "Lightweight but only 370 HP — gets eaten alive on Kemmel Straight."},
-      {"car": "Nissan GT-R NISMO GT3", "rating": 4, "reason": "AWD is a huge advantage in Spa's unpredictable weather. Strong through Eau Rouge."},
-      {"car": "Porsche 911 GT3 R (992) '22", "rating": 4, "reason": "550 HP and excellent stability. Well-suited to Spa's mix of speed and technicality."}
+      {
+        "car": "BMW M4 GT Endurance Model",
+        "rating": 5,
+        "reason": "625 HP and stability through Eau Rouge. Power advantage on Kemmel Straight is massive."
+      },
+      {
+        "car": "Dodge Viper GTS-R GT3",
+        "rating": 5,
+        "reason": "645 HP V10 dominates the long straights. If the driver can manage the weight through Bus Stop."
+      },
+      {
+        "car": "Audi R8 LMS Evo '19",
+        "rating": 4,
+        "reason": "Balanced chassis handles everything Spa throws at it. AWD helps in wet conditions."
+      },
+      {
+        "car": "Mazda RX-Vision GT3 Concept",
+        "rating": 3,
+        "reason": "Lightweight but only 370 HP \u2014 gets eaten alive on Kemmel Straight."
+      },
+      {
+        "car": "Nissan GT-R NISMO GT3",
+        "rating": 4,
+        "reason": "AWD is a huge advantage in Spa's unpredictable weather. Strong through Eau Rouge."
+      },
+      {
+        "car": "Porsche 911 GT3 R (992) '22",
+        "rating": 4,
+        "reason": "550 HP and excellent stability. Well-suited to Spa's mix of speed and technicality."
+      }
     ],
     "imageUrl": null
   },
@@ -123,12 +257,34 @@
     "direction": "Clockwise",
     "description": "A short, explosive circuit set in the stunning Styrian mountains. With only 10 corners, every single turn matters immensely. Long straights connected by heavy braking zones create a pure racing spectacle with constant overtaking action.",
     "keyCorners": [
-      {"name": "Niki Lauda Kurve (T1)", "type": "Heavy Braking", "description": "90-degree right-hander after the long pit straight. Prime overtaking zone with heavy braking from top speed."},
-      {"name": "Remus (T3)", "type": "Medium Speed", "description": "Sweeping right-hander uphill. Carries good speed and sets up the approach to Turn 4."},
-      {"name": "Rauch (T4)", "type": "Blind Crest", "description": "Blind right-hander over the crest. Full commitment required — the car gets light over the top."},
-      {"name": "Rindt Kurve (T7)", "type": "High Speed", "description": "Fast right-hander leading onto the final straight. Exit speed defines overtaking potential."}
+      {
+        "name": "Niki Lauda Kurve (T1)",
+        "type": "Heavy Braking",
+        "description": "90-degree right-hander after the long pit straight. Prime overtaking zone with heavy braking from top speed."
+      },
+      {
+        "name": "Remus (T3)",
+        "type": "Medium Speed",
+        "description": "Sweeping right-hander uphill. Carries good speed and sets up the approach to Turn 4."
+      },
+      {
+        "name": "Rauch (T4)",
+        "type": "Blind Crest",
+        "description": "Blind right-hander over the crest. Full commitment required \u2014 the car gets light over the top."
+      },
+      {
+        "name": "Rindt Kurve (T7)",
+        "type": "High Speed",
+        "description": "Fast right-hander leading onto the final straight. Exit speed defines overtaking potential."
+      }
     ],
-    "characteristics": ["Only 10 turns", "930m main straight", "Stop-and-go character", "65m elevation in short lap", "Constant overtaking"],
+    "characteristics": [
+      "Only 10 turns",
+      "930m main straight",
+      "Stop-and-go character",
+      "65m elevation in short lap",
+      "Constant overtaking"
+    ],
     "analysis": {
       "topSpeed": 5,
       "braking": 5,
@@ -137,19 +293,43 @@
       "overtaking": 5
     },
     "carSuitability": [
-      {"car": "Dodge Viper GTS-R GT3", "rating": 5, "reason": "Maximum power for the 930m straight. Heavy braking suits the Viper's strong stoppers."},
-      {"car": "BMW M4 GT Endurance Model", "rating": 5, "reason": "Power and braking stability make it ideal for stop-and-go circuits."},
-      {"car": "Lamborghini Huracán GT3", "rating": 4, "reason": "AWD traction on uphill exits and V10 power on straights."},
-      {"car": "Mazda RX-Vision GT3 Concept", "rating": 2, "reason": "370 HP is a death sentence on a 930m straight. Technical advantage doesn't apply with only 10 turns."},
-      {"car": "Renault R.S.01 GT3", "rating": 4, "reason": "Good power-to-weight and responsive handling through the limited corner count."},
-      {"car": "Lexus RC F GT3", "rating": 3, "reason": "Moderate power limits straight speed. Strong braking partially compensates."}
+      {
+        "car": "Dodge Viper GTS-R GT3",
+        "rating": 5,
+        "reason": "Maximum power for the 930m straight. Heavy braking suits the Viper's strong stoppers."
+      },
+      {
+        "car": "BMW M4 GT Endurance Model",
+        "rating": 5,
+        "reason": "Power and braking stability make it ideal for stop-and-go circuits."
+      },
+      {
+        "car": "Lamborghini Hurac\u00e1n GT3",
+        "rating": 4,
+        "reason": "AWD traction on uphill exits and V10 power on straights."
+      },
+      {
+        "car": "Mazda RX-Vision GT3 Concept",
+        "rating": 2,
+        "reason": "370 HP is a death sentence on a 930m straight. Technical advantage doesn't apply with only 10 turns."
+      },
+      {
+        "car": "Renault R.S.01 GT3",
+        "rating": 4,
+        "reason": "Good power-to-weight and responsive handling through the limited corner count."
+      },
+      {
+        "car": "Lexus RC F GT3",
+        "rating": 3,
+        "reason": "Moderate power limits straight speed. Strong braking partially compensates."
+      }
     ],
     "imageUrl": null
   },
   {
     "slug": "interlagos",
-    "name": "Autódromo José Carlos Pace",
-    "location": "São Paulo",
+    "name": "Aut\u00f3dromo Jos\u00e9 Carlos Pace",
+    "location": "S\u00e3o Paulo",
     "country": "Brazil",
     "type": "Real Circuit",
     "length": "4.309 km",
@@ -158,14 +338,36 @@
     "longestStraight": "540m",
     "surface": "Asphalt",
     "direction": "Counter-clockwise",
-    "description": "Brazil's iconic racing cathedral. Interlagos runs counter-clockwise with a unique rhythm — the fast, flowing infield contrasts with technical braking zones and a long uphill main straight. Weather can change rapidly, adding drama to an already intense venue.",
+    "description": "Brazil's iconic racing cathedral. Interlagos runs counter-clockwise with a unique rhythm \u2014 the fast, flowing infield contrasts with technical braking zones and a long uphill main straight. Weather can change rapidly, adding drama to an already intense venue.",
     "keyCorners": [
-      {"name": "Senna S (T1-2)", "type": "High Speed", "description": "Fast left-right esses named after Ayrton Senna. Downhill entry demands absolute precision — get it wrong and the whole lap suffers."},
-      {"name": "Descida do Lago (T4)", "type": "Heavy Braking", "description": "Long, descending left-hander. Rewards late braking and smooth inputs on the downhill approach."},
-      {"name": "Bico de Pato (T8)", "type": "Medium Speed", "description": "Sharp left-hander that breaks the rhythm. Heavy braking from speed catches out the unwary."},
-      {"name": "Junção (T12)", "type": "Slow", "description": "Slow left-hander leading onto the long uphill main straight. Exit speed is critical — this corner defines lap time."}
+      {
+        "name": "Senna S (T1-2)",
+        "type": "High Speed",
+        "description": "Fast left-right esses named after Ayrton Senna. Downhill entry demands absolute precision \u2014 get it wrong and the whole lap suffers."
+      },
+      {
+        "name": "Descida do Lago (T4)",
+        "type": "Heavy Braking",
+        "description": "Long, descending left-hander. Rewards late braking and smooth inputs on the downhill approach."
+      },
+      {
+        "name": "Bico de Pato (T8)",
+        "type": "Medium Speed",
+        "description": "Sharp left-hander that breaks the rhythm. Heavy braking from speed catches out the unwary."
+      },
+      {
+        "name": "Jun\u00e7\u00e3o (T12)",
+        "type": "Slow",
+        "description": "Slow left-hander leading onto the long uphill main straight. Exit speed is critical \u2014 this corner defines lap time."
+      }
     ],
-    "characteristics": ["Counter-clockwise layout", "Senna S — iconic fast esses", "Uphill main straight", "Unpredictable weather", "Close, intense racing"],
+    "characteristics": [
+      "Counter-clockwise layout",
+      "Senna S \u2014 iconic fast esses",
+      "Uphill main straight",
+      "Unpredictable weather",
+      "Close, intense racing"
+    ],
     "analysis": {
       "topSpeed": 4,
       "braking": 4,
@@ -174,12 +376,36 @@
       "overtaking": 4
     },
     "carSuitability": [
-      {"car": "Mazda RX-Vision GT3 Concept", "rating": 5, "reason": "Light weight excels through the flowing infield. D'ornellas's dominance continued here in Round 3."},
-      {"car": "Audi R8 LMS Evo '19", "rating": 4, "reason": "Balanced chassis handles the mix of fast and slow corners. AWD helps in variable weather."},
-      {"car": "Ferrari 296 GT3", "rating": 4, "reason": "Hybrid power delivery suits the stop-and-go nature of the infield."},
-      {"car": "Renault R.S.01 GT3", "rating": 4, "reason": "Good power-to-weight ratio and responsive handling through the technical infield."},
-      {"car": "Nissan GT-R NISMO GT3", "rating": 3, "reason": "AWD confidence in the Senna S helps, but weight penalty through the tight infield."},
-      {"car": "Dodge Viper GTS-R GT3", "rating": 3, "reason": "Power advantage on the main straight, but struggles through the tight Senna S complex."}
+      {
+        "car": "Mazda RX-Vision GT3 Concept",
+        "rating": 5,
+        "reason": "Light weight excels through the flowing infield. D'ornellas's dominance continued here in Round 3."
+      },
+      {
+        "car": "Audi R8 LMS Evo '19",
+        "rating": 4,
+        "reason": "Balanced chassis handles the mix of fast and slow corners. AWD helps in variable weather."
+      },
+      {
+        "car": "Ferrari 296 GT3",
+        "rating": 4,
+        "reason": "Hybrid power delivery suits the stop-and-go nature of the infield."
+      },
+      {
+        "car": "Renault R.S.01 GT3",
+        "rating": 4,
+        "reason": "Good power-to-weight ratio and responsive handling through the technical infield."
+      },
+      {
+        "car": "Nissan GT-R NISMO GT3",
+        "rating": 3,
+        "reason": "AWD confidence in the Senna S helps, but weight penalty through the tight infield."
+      },
+      {
+        "car": "Dodge Viper GTS-R GT3",
+        "rating": 3,
+        "reason": "Power advantage on the main straight, but struggles through the tight Senna S complex."
+      }
     ],
     "imageUrl": null
   },
@@ -197,12 +423,34 @@
     "direction": "Clockwise",
     "description": "A classic GT circuit winding through dense Swiss forest. Deep Forest combines tight technical sections with flowing sweepers and atmospheric tunnel passages. The 18-corner layout demands complete versatility from both car and driver.",
     "keyCorners": [
-      {"name": "Forest Chicane (T3-4)", "type": "Heavy Braking", "description": "Tight left-right chicane through the tree line. Kerb riding is essential for maintaining speed."},
-      {"name": "Tunnel Section (T8-9)", "type": "Blind", "description": "Dark tunnel passage with a kink mid-way. Eyes need time to adjust — experienced drivers know the line by feel."},
-      {"name": "Lakeside Sweep (T13)", "type": "High Speed", "description": "Long, fast right-hander along the lake edge. Carries massive speed if the entry angle is perfect."},
-      {"name": "Final Hairpin (T17)", "type": "Hairpin", "description": "Tight left-hander before the pit straight. Heavy braking and good traction needed for the run to the line."}
+      {
+        "name": "Forest Chicane (T3-4)",
+        "type": "Heavy Braking",
+        "description": "Tight left-right chicane through the tree line. Kerb riding is essential for maintaining speed."
+      },
+      {
+        "name": "Tunnel Section (T8-9)",
+        "type": "Blind",
+        "description": "Dark tunnel passage with a kink mid-way. Eyes need time to adjust \u2014 experienced drivers know the line by feel."
+      },
+      {
+        "name": "Lakeside Sweep (T13)",
+        "type": "High Speed",
+        "description": "Long, fast right-hander along the lake edge. Carries massive speed if the entry angle is perfect."
+      },
+      {
+        "name": "Final Hairpin (T17)",
+        "type": "Hairpin",
+        "description": "Tight left-hander before the pit straight. Heavy braking and good traction needed for the run to the line."
+      }
     ],
-    "characteristics": ["18 demanding corners", "Atmospheric tunnels", "Swiss forest setting", "Mix of fast and technical", "765m main straight"],
+    "characteristics": [
+      "18 demanding corners",
+      "Atmospheric tunnels",
+      "Swiss forest setting",
+      "Mix of fast and technical",
+      "765m main straight"
+    ],
     "analysis": {
       "topSpeed": 3,
       "braking": 4,
@@ -211,12 +459,36 @@
       "overtaking": 3
     },
     "carSuitability": [
-      {"car": "Mazda RX-Vision GT3 Concept", "rating": 5, "reason": "Lightweight chassis thrives through 18 corners. The less power you waste, the more you gain."},
-      {"car": "Audi R8 LMS Evo '19", "rating": 5, "reason": "Neutral handling and braking stability are perfect for Deep Forest's technical demands."},
-      {"car": "Ferrari 458 Italia GT3", "rating": 4, "reason": "Naturally aspirated V8 response suits the constant direction changes."},
-      {"car": "Toyota GR Supra Racing Concept", "rating": 4, "reason": "Lightweight and agile. The forest rewards finesse over power."},
-      {"car": "Dodge Viper GTS-R GT3", "rating": 2, "reason": "Heaviest car on a track with 18 corners and limited straight. A handful at best."},
-      {"car": "Porsche 911 RSR (2017)", "rating": 4, "reason": "Mid-engine balance shines in technical, flowing sections."}
+      {
+        "car": "Mazda RX-Vision GT3 Concept",
+        "rating": 5,
+        "reason": "Lightweight chassis thrives through 18 corners. The less power you waste, the more you gain."
+      },
+      {
+        "car": "Audi R8 LMS Evo '19",
+        "rating": 5,
+        "reason": "Neutral handling and braking stability are perfect for Deep Forest's technical demands."
+      },
+      {
+        "car": "Ferrari 458 Italia GT3",
+        "rating": 4,
+        "reason": "Naturally aspirated V8 response suits the constant direction changes."
+      },
+      {
+        "car": "Toyota GR Supra Racing Concept",
+        "rating": 4,
+        "reason": "Lightweight and agile. The forest rewards finesse over power."
+      },
+      {
+        "car": "Dodge Viper GTS-R GT3",
+        "rating": 2,
+        "reason": "Heaviest car on a track with 18 corners and limited straight. A handful at best."
+      },
+      {
+        "car": "Porsche 911 RSR (2017)",
+        "rating": 4,
+        "reason": "Mid-engine balance shines in technical, flowing sections."
+      }
     ],
     "imageUrl": null
   },
@@ -234,12 +506,34 @@
     "direction": "Clockwise",
     "description": "A challenging Japanese circuit nestled in the mountains of Oita Prefecture. Autopolis combines long straights with tight technical sections, dramatic elevation changes, and notoriously changeable weather. The circuit's exposed hilltop location makes it especially punishing in wet conditions.",
     "keyCorners": [
-      {"name": "Turn 1 Hairpin", "type": "Heavy Braking", "description": "Tight right-hander at the end of the main straight. Prime overtaking opportunity with heavy braking from top speed."},
-      {"name": "Bridge Corner (T5-6)", "type": "High Speed", "description": "Fast sweeping section over the bridge. Requires commitment and confidence in the car's aero grip."},
-      {"name": "Turn 10 Hairpin", "type": "Hairpin", "description": "Tight left-hand hairpin at the lowest point. Traction on exit is critical for the uphill run."},
-      {"name": "Final Chicane (T17-18)", "type": "Medium Speed", "description": "Technical chicane before the main straight. Exit speed defines lap time."}
+      {
+        "name": "Turn 1 Hairpin",
+        "type": "Heavy Braking",
+        "description": "Tight right-hander at the end of the main straight. Prime overtaking opportunity with heavy braking from top speed."
+      },
+      {
+        "name": "Bridge Corner (T5-6)",
+        "type": "High Speed",
+        "description": "Fast sweeping section over the bridge. Requires commitment and confidence in the car's aero grip."
+      },
+      {
+        "name": "Turn 10 Hairpin",
+        "type": "Hairpin",
+        "description": "Tight left-hand hairpin at the lowest point. Traction on exit is critical for the uphill run."
+      },
+      {
+        "name": "Final Chicane (T17-18)",
+        "type": "Medium Speed",
+        "description": "Technical chicane before the main straight. Exit speed defines lap time."
+      }
     ],
-    "characteristics": ["18 technical corners", "52m elevation change", "Exposed hilltop weather", "902m main straight", "Mix of fast and slow"],
+    "characteristics": [
+      "18 technical corners",
+      "52m elevation change",
+      "Exposed hilltop weather",
+      "902m main straight",
+      "Mix of fast and slow"
+    ],
     "analysis": {
       "topSpeed": 4,
       "braking": 4,
@@ -248,13 +542,99 @@
       "overtaking": 3
     },
     "carSuitability": [
-      {"car": "Mazda RX-Vision GT3 Concept", "rating": 4, "reason": "Lightweight chassis excels in the technical sections. Less exposed on the straight than at Red Bull Ring."},
-      {"car": "Dodge Viper GTS-R GT3", "rating": 4, "reason": "Power advantage on the 900m straight. Wet conditions add challenge but the V10 torque helps."},
-      {"car": "Nissan GT-R NISMO GT3", "rating": 5, "reason": "AWD traction is a massive advantage in Autopolis's wet conditions. Strong through technical sections."},
-      {"car": "Audi R8 LMS Evo '19", "rating": 4, "reason": "Balanced chassis handles the mix of corners well. Predictable in changing conditions."},
-      {"car": "BMW M4 GT Endurance Model", "rating": 4, "reason": "Power for the straight and strong braking into Turn 1. FR layout manageable in wet."},
-      {"car": "Toyota GR Supra Racing Concept", "rating": 3, "reason": "Nimble through corners but power deficit on the main straight hurts."}
+      {
+        "car": "Mazda RX-Vision GT3 Concept",
+        "rating": 4,
+        "reason": "Lightweight chassis excels in the technical sections. Less exposed on the straight than at Red Bull Ring."
+      },
+      {
+        "car": "Dodge Viper GTS-R GT3",
+        "rating": 4,
+        "reason": "Power advantage on the 900m straight. Wet conditions add challenge but the V10 torque helps."
+      },
+      {
+        "car": "Nissan GT-R NISMO GT3",
+        "rating": 5,
+        "reason": "AWD traction is a massive advantage in Autopolis's wet conditions. Strong through technical sections."
+      },
+      {
+        "car": "Audi R8 LMS Evo '19",
+        "rating": 4,
+        "reason": "Balanced chassis handles the mix of corners well. Predictable in changing conditions."
+      },
+      {
+        "car": "BMW M4 GT Endurance Model",
+        "rating": 4,
+        "reason": "Power for the straight and strong braking into Turn 1. FR layout manageable in wet."
+      },
+      {
+        "car": "Toyota GR Supra Racing Concept",
+        "rating": 3,
+        "reason": "Nimble through corners but power deficit on the main straight hurts."
+      }
     ],
     "imageUrl": null
+  },
+  {
+    "slug": "barcelona-catalunya",
+    "name": "Circuit de Barcelona-Catalunya",
+    "location": "Montmel\u00f3, Barcelona",
+    "country": "Spain",
+    "type": "Grand Prix Circuit",
+    "length": "4.655 km",
+    "turns": 16,
+    "elevation": "30m",
+    "longestStraight": "1.05 km",
+    "surface": "Asphalt",
+    "direction": "Clockwise",
+    "description": "A benchmark Grand Prix circuit that tests every aspect of car and driver. Barcelona-Catalunya's mix of high-speed sweepers, heavy braking zones, and technical chicanes makes it the ultimate all-rounder test.",
+    "keyCorners": [
+      {
+        "name": "Turn 1 (Elf)",
+        "type": "Heavy Braking",
+        "description": "Hard braking from top speed into a right-hander. Late braking gains positions but lock-ups are costly."
+      },
+      {
+        "name": "Turn 3 (Renault)",
+        "type": "High Speed",
+        "description": "Fast right-hand sweeper that rewards commitment and tests front-end grip under load."
+      },
+      {
+        "name": "Turn 5 (Seat)",
+        "type": "Medium Speed",
+        "description": "Tricky chicane complex where a clean exit sets up the long run to Turn 7."
+      },
+      {
+        "name": "Turn 10 (La Caixa)",
+        "type": "Heavy Braking",
+        "description": "Hard braking into a tight right-hander. Key overtaking spot and easy to overdrive."
+      }
+    ],
+    "characteristics": [
+      "Heavy tyre degradation",
+      "Long main straight",
+      "Mix of high and low speed corners",
+      "Strong headwind on back straight",
+      "Demanding on front tyres"
+    ],
+    "analysis": {
+      "brakingDemand": "High",
+      "topSpeed": "High",
+      "downforce": "Medium-High",
+      "tyreWear": "High",
+      "overtakingDifficulty": "Medium"
+    },
+    "carSuitability": {
+      "bestSuited": [
+        "Balanced chassis",
+        "Good top speed",
+        "Strong under braking"
+      ],
+      "challenges": [
+        "High tyre wear mid-corner",
+        "Rear instability in Sector 3"
+      ]
+    },
+    "imageUrl": ""
   }
 ]
